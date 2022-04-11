@@ -1,8 +1,39 @@
 .detailCard {
-  background-color: yellow;
-  display: flex;
+  display: grid;
+  width: 540px;
+  max-width: 100%;
+  grid-template-columns: 1fr 2fr;
+  &__img {
+    width: 180px;
+  }
   &__text {
+    max-width: 360px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    &__info {
+      display: flex;
+      flex-direction: column;
+      &__title {
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        text-align: start;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: x-large;
+      }
+      &__author, &__publisher, &__pubdate {
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        text-align: start;
+        box-sizing: border-box;
+      }
+    }
   }
 }

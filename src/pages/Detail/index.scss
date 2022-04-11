@@ -1,11 +1,10 @@
 @import "Styles/variable.scss";
 .detail {
-  // margin-top: 70px;
+  margin-top: 70px;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   align-items: center;
 
   &__list {

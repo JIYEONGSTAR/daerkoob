@@ -8,6 +8,7 @@ import "./index.scss";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineNotification } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import logo from "images/daerkooblogo.png";
 
 const Navbar = () => {
   const history = useHistory();
@@ -56,7 +57,7 @@ const Navbar = () => {
     <div className="nav">
       <div className="nav__left">
         <Link to="/">
-          <img className="nav__left__logo" src="daerkooblogo.png" alt="" />
+          <img className="nav__left__logo" src={logo} alt="" />
         </Link>
       </div>
 
