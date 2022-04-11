@@ -3,14 +3,17 @@ import React, { useEffect, useState } from "react";
 import api from "api/api";
 import useCurrentUser from "Hooks/useCurrentUser";
 import DetailList from "components/List/DetailList";
-import RegisterModal from "components/Modal/RegisterModal";
 import "./index.scss";
+import { useHistory } from "react-router-dom";
+import DetailCard from "components/Card/DetailCard";
+import TransList from "components/List/TransList";
 const Detail = ({ match, location }) => {
+  const history = useHistory();
   const { currentUser } = useCurrentUser();
   const [currentBook, setCurrentBook] = useState([]);
   const { params } = match; //url params
-  const [registerTrans, setRegisterTrans] = useState(false);
-  const [registerReview, setRegisterReview] = useState(false);
+  const [viewTrans, setViewTrans] = useState(false);
+  const [viewReview, setViewReview] = useState(false);
   useEffect(() => {
     const findBook = async () => {
       const response = await api.get(`book/find/${params.isbn}`);
@@ -20,48 +23,48 @@ const Detail = ({ match, location }) => {
     findBook();
   }, []);
   console.log(currentBook);
+  if (viewTrans) {
+    return <TransList type="transcription" isbn={params.isbn} />;
+  }
   return (
     <div className="detail">
-      <div className="detail__information">
-        <div className="detail__information__img">
-          <img src={currentBook.image} alt="" height="280" width="180" />
-        </div>
-        <div>{currentBook.title}</div>
-        <div>{currentBook.author}</div>
-        <div>{currentBook.publisher}</div>
-        <div>{currentBook.pubdate}</div>
-        <div className="detail__information__description">
-          {currentBook.description}
-        </div>
-      </div>
+      <DetailCard currentBook={currentBook} />
       <div className="detail__list">
         <div className="detail__list__trans">
           <DetailList type="transcription" isbn={params.isbn} />
+          <button onClick={() => setViewTrans(true)}>더보기</button>
           {currentUser.id !== 0 && (
-            <button onClick={() => setRegisterTrans(true)}>
+            <button
+              onClick={() =>
+                history.push({
+                  pathname: `/register/${params.isbn}`,
+                  state: {
+                    type: "transcription",
+                  },
+                })
+              }
+            >
               필사작성하러가기
             </button>
           )}
-          <RegisterModal
-            isOpen={registerTrans}
-            onClose={() => setRegisterTrans(false)}
-            type="transcription"
-            isbn={params.isbn}
-          />
         </div>
         <div className="detail__list__review">
           <DetailList type="review" isbn={params.isbn} />
+          <button>더보기</button>
           {currentUser.id !== 0 && (
-            <button onClick={() => setRegisterReview(true)}>
+            <button
+              onClick={() =>
+                history.push({
+                  pathname: `/register/${params.isbn}`,
+                  state: {
+                    type: "review",
+                  },
+                })
+              }
+            >
               리뷰작성하러가기
             </button>
           )}
-          <RegisterModal
-            isOpen={registerReview}
-            onClose={() => setRegisterReview(false)}
-            type="review"
-            isbn={params.isbn}
-          />
         </div>
       </div>
     </div>
