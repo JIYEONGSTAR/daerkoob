@@ -1,0 +1,8 @@
+.detailCard {
+  background-color: yellow;
+  display: flex;
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+}

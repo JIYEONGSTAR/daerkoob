@@ -27,7 +27,7 @@ const BookCard = ({ data }) => {
     init();
   }, []);
   const handleClick = () => {
-    history.push(`detail/${isbn}`);
+    history.push(`/detail/${isbn}`);
   };
   return (
     <div className="bookCard" onClick={handleClick}>
@@ -36,8 +36,8 @@ const BookCard = ({ data }) => {
         <div className="bookCard__title">
           {title.replace(/<b>/gi, "").replace(/<\/b>/gi, "")}
         </div>
-        필사 수:{transCount}
-        &nbsp; 리뷰 수:{reviewCount}
+        필사 수 : {transCount}
+        &nbsp; 리뷰 수 : {reviewCount}
       </>
     </div>
   );

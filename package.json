@@ -20,6 +20,7 @@
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "react-stars": "^2.2.5",
+    "react-tabulator": "^0.18.1",
     "recoil": "^0.4.1",
     "recoil-persist": "^4.0.0",
     "slick": "^1.12.2",

@@ -3,7 +3,7 @@
 .nav {
   position: fixed;
   width: 100vw;
-  height: 10vh;
+  height: 70px;
   z-index: 10;
   display: flex;
   justify-content: space-around; /*모두 오른쪽에 배치*/
@@ -11,6 +11,10 @@
   padding: 10px 10%;
   background-color: $darkColor;
   color: white;
+  &:hover {
+    color: $pointColor;
+    transition: all 0.3s ease 0s;
+  }
   &__input {
     background-color: white;
     border: 2px solid #ccc;
@@ -29,6 +33,7 @@
   }
   &__left {
     cursor: pointer;
+
     &__logo {
       width: 3rem;
     }
@@ -53,10 +58,10 @@
         display: flex;
         justify-content: center;
         align-self: center;
-      }
-      &hover {
-        color: $lightColor;
-        transition: all 0.3s ease 0s;
+        &:hover {
+          color: $pointColor;
+          transition: all 0.3s ease 0s;
+        }
       }
     }
   }
