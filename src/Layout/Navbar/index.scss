@@ -6,7 +6,7 @@
   height: 70px;
   z-index: 10;
   display: flex;
-  justify-content: space-around; /*모두 오른쪽에 배치*/
+  justify-content: space-between; /*모두 오른쪽에 배치*/
   align-items: center; /*헤더의 모든 항목을 중앙에 배치*/
   padding: 10px 10%;
   background-color: $darkColor;
@@ -18,20 +18,23 @@
   &__input {
     background-color: white;
     border: 2px solid #ccc;
-    border-radius: 30px;
-    width: 530px;
+    border-radius: 25px;
+    width: 45vw;
     display: flex;
     align-items: center;
     padding: 10px;
     color: black;
+    overflow: hidden;
     input {
       margin-left: 2%;
     }
     &__icon {
+      min-width: 20px;
       color: $darkColor;
     }
   }
   &__left {
+    padding-right: 20px;
     cursor: pointer;
 
     &__logo {
@@ -40,12 +43,13 @@
   }
   &__right {
     display: flex;
+    padding-left: 25px;
     justify-content: center;
     text-align: center;
     align-items: center;
     &__c1 {
       display: flex;
-      padding: 0px 20px;
+      padding-right: 25px;
       // justify-content: center;
       align-items: center;
       vertical-align: bottom;
@@ -64,5 +68,8 @@
         }
       }
     }
+  }
+  &__button {
+    min-width: 60px;
   }
 }

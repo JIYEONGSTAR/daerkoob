@@ -85,7 +85,7 @@ const Navbar = () => {
         {currentUser.id !== 0 ? (
           // <div className="nav__right">
           <div>
-            <button className="button__nav" onClick={handleLogout}>
+            <button className="nav__button" onClick={handleLogout}>
               {" "}
               로그아웃
             </button>
@@ -93,7 +93,7 @@ const Navbar = () => {
         ) : (
           // </div>
           // <div className="nav__right">
-          <button className="button__nav">
+          <button className="nav__button">
             <Link to="/auth"> 로그인</Link>
           </button>
           // </div>
