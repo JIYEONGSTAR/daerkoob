@@ -14,8 +14,8 @@ const Grass = ({ userId, year }) => {
       setList([...response.data.grass]);
     };
     init();
-    return () => {};
-  }, []);
+    // return () => {};
+  }, [userId]);
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
   // for (let i = 0; i < firstDateOfYear; i++) {

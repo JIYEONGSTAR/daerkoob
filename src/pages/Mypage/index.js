@@ -9,7 +9,7 @@ const Mypage = () => {
   const year = new Date().getFullYear();
   return (
     <div className="mypage">
-      <InfoCard person="myself" id={currentUser.id} />
+      <InfoCard personInfo={currentUser} id={currentUser.id} />
       <div className="grass">
         <Grass userId={currentUser.id} year={year} />
       </div>
