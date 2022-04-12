@@ -8,6 +8,7 @@ import "./index.scss";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineNotification } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import logo from "images/daerkooblogo.png";
 
 const Navbar = () => {
   const history = useHistory();
@@ -56,7 +57,7 @@ const Navbar = () => {
     <div className="nav">
       <div className="nav__left">
         <Link to="/">
-          <img className="nav__left__logo" src="daerkooblogo.png" alt="" />
+          <img className="nav__left__logo" src={logo} alt="" />
         </Link>
       </div>
 
@@ -85,7 +86,7 @@ const Navbar = () => {
         {currentUser.id !== 0 ? (
           // <div className="nav__right">
           <div>
-            <button className="button__nav" onClick={handleLogout}>
+            <button className="nav__button" onClick={handleLogout}>
               {" "}
               로그아웃
             </button>
@@ -93,7 +94,7 @@ const Navbar = () => {
         ) : (
           // </div>
           // <div className="nav__right">
-          <button className="button__nav">
+          <button className="nav__button">
             <Link to="/auth"> 로그인</Link>
           </button>
           // </div>

@@ -1,20 +1,26 @@
 @import "Styles/variable.scss";
 .bookCard {
+  display: flex;
+  position: relative;
+  overflow: hidden;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   // box-shadow: 5px 5px 5px gray;
   width: 100%;
   padding: 10px;
   height: 300px;
   &__img {
     margin-top: 10px;
-    width: 100%;
+    min-width: 180px;
     height: 80%;
   }
   &__title {
+    width: 100%;
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-weight: bold;
   }
 }

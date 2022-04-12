@@ -7,7 +7,7 @@ const EachDetailList = ({ list }) => {
   return (
     <>
       {list.length === 0 ? (
-        <div>내용이 없습니다</div>
+        <div className="detail__list__empty">내용이 없습니다.</div>
       ) : (
         <>
           {list.map((each) => (
@@ -40,7 +40,7 @@ const DetailList = ({ type, isbn }) => {
   return (
     <>
       <div className="detail__list__type">
-        {type === "review" ? <>리뷰 </> : <>필사</>}
+        {type === "review" ? <h3>이 책의 리뷰 </h3> : <h3>이 책의 필사</h3>}
       </div>
       <EachDetailList list={list} />
     </>
