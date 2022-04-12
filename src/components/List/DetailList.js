@@ -7,7 +7,7 @@ const EachDetailList = ({ list }) => {
   return (
     <>
       {list.length === 0 ? (
-        <div>내용이 없습니다</div>
+        <div className="detail__list__empty">내용이 없습니다.</div>
       ) : (
         <>
           {list.map((each) => (
