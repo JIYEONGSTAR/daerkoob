@@ -45,6 +45,9 @@ const InfoCard = ({ person, id }) => {
             {currentUser.nickName}
           </div>
         </div>
+        {/* <div className="infoCard__top__friendRegister">
+
+        </div> */}
         <div className="infoCard__top__btn">
           <button onClick={() => setReviewModalOpen(true)}>
             <p>{MyTransList.length}</p> <p>리뷰</p>

@@ -6,7 +6,7 @@ import DetailList from "components/List/DetailList";
 import "./index.scss";
 import { useHistory } from "react-router-dom";
 import DetailCard from "components/Card/DetailCard";
-import TransList from "components/List/TransList";
+import WholeList from "components/List/WholeList";
 const Detail = ({ match, location }) => {
   const history = useHistory();
   const { currentUser } = useCurrentUser();
@@ -24,20 +24,33 @@ const Detail = ({ match, location }) => {
   }, []);
   console.log(currentBook);
   if (viewTrans) {
-    return <TransList type="transcription" isbn={params.isbn} />;
+    return (
+      <WholeList
+        type="transcription"
+        isbn={params.isbn}
+        onClose={() => setViewTrans(false)}
+      />
+    );
+  }
+  if (viewReview) {
+    return (
+      <WholeList
+        type="review"
+        isbn={params.isbn}
+        onClose={() => setViewReview(false)}
+      />
+    );
   }
   return (
     <div className="detail">
       <DetailCard currentBook={currentBook} />
       <div className="detail__list">
         <div className="detail__list__trans">
-          <DetailList type="transcription" isbn={params.isbn} />
-        </div>
-        <div className="detail__list__review">
-          <DetailList type="review" isbn={params.isbn} />
-        </div>
-        <div className="detail__list__trans__button">
-          <button onClick={() => setViewTrans(true)}>더보기</button>
+          <DetailList
+            type="transcription"
+            isbn={params.isbn}
+            setView={() => setViewTrans(true)}
+          />
           {currentUser.id !== 0 && (
             <button
               onClick={() =>
@@ -53,8 +66,14 @@ const Detail = ({ match, location }) => {
             </button>
           )}
         </div>
-        <div className="detail__list__review__button">
-          <button>더보기</button>
+
+        <div className="detail__list__review">
+          <DetailList
+            type="review"
+            isbn={params.isbn}
+            setView={() => setViewReview(true)}
+          />
+
           {currentUser.id !== 0 && (
             <button
               onClick={() =>
@@ -69,7 +88,7 @@ const Detail = ({ match, location }) => {
               리뷰 작성
             </button>
           )}
-          </div>
+        </div>
       </div>
     </div>
   );
