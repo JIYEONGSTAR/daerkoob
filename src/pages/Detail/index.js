@@ -32,27 +32,28 @@ const Detail = ({ match, location }) => {
       <div className="detail__list">
         <div className="detail__list__trans">
           <DetailList type="transcription" isbn={params.isbn} />
-          <div className="detail__list__trans__button">
-            <button onClick={() => setViewTrans(true)}>더보기</button>
-            {currentUser.id !== 0 && (
-              <button
-                onClick={() =>
-                  history.push({
-                    pathname: `/register/${params.isbn}`,
-                    state: {
-                      type: "transcription",
-                    },
-                  })
-                }
-              >
-                필사 작성하러가기
-              </button>
-            )}
-          </div>
         </div>
         <div className="detail__list__review">
           <DetailList type="review" isbn={params.isbn} />
-          <div className="detail__list__review__button">
+        </div>
+        <div className="detail__list__trans__button">
+          <button onClick={() => setViewTrans(true)}>더보기</button>
+          {currentUser.id !== 0 && (
+            <button
+              onClick={() =>
+                history.push({
+                  pathname: `/register/${params.isbn}`,
+                  state: {
+                    type: "transcription",
+                  },
+                })
+              }
+            >
+              필사 작성
+            </button>
+          )}
+        </div>
+        <div className="detail__list__review__button">
           <button>더보기</button>
           {currentUser.id !== 0 && (
             <button
@@ -65,11 +66,10 @@ const Detail = ({ match, location }) => {
                 })
               }
             >
-              리뷰 작성하러가기
+              리뷰 작성
             </button>
           )}
           </div>
-        </div>
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const DetailList = ({ type, isbn }) => {
   return (
     <>
       <div className="detail__list__type">
-        {type === "review" ? <h3>리뷰 </h3> : <h3>필사</h3>}
+        {type === "review" ? <h3>이 책의 리뷰 </h3> : <h3>이 책의 필사</h3>}
       </div>
       <EachDetailList list={list} />
     </>
