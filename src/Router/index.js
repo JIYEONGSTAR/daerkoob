@@ -13,6 +13,9 @@ import useCurrentUser from "Hooks/useCurrentUser";
 import FriendPage from "pages/Mypage/FriendPage";
 import NotFound from "pages/NotFound";
 import Register from "pages/Register";
+import ReviewDetail from "pages/Detail/ReviewDetail";
+import TransDetail from "pages/Detail/TransDetail";
+import NoticeAdmin from "pages/Notice/NoticeAdmin";
 const Router = () => {
   const { currentUser } = useCurrentUser();
   const pushWhenSignedIn = (Component) =>
@@ -42,9 +45,11 @@ const Router = () => {
         <Route exact path="/auth" component={Auth} />
         <Route exact path="/form" component={Form} />
         <Route exact path="/notice" component={Notice} />
-        {/* <Route path="/transcription" component={Review} /> */}
+        <Route path="/noticeAdmin" component={NoticeAdmin} />
         <Route exact path="/detail/:isbn" component={Detail} />
         <Route exact path="/register/:isbn" component={Register} />
+        <Route exact path="/reviewDetail/:id" component={ReviewDetail} />
+        <Route exact path="/transDetail/:id" component={TransDetail} />
         {/*        
         <Route path="/bookregister/:id" component={BookRegister} />
         id를 파라미터로 받기

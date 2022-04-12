@@ -4,7 +4,8 @@ import useCurrentUser from "Hooks/useCurrentUser";
 import CommentInputCard from "components/Card/CommentInputCard";
 import NestedCommentCard from "components/Card/NestedCommentCard";
 import Pagination from "components/Utils/Pagination";
-const CommentCard = ({ data }) => {
+const CommentCard = ({ data, update }) => {
+  console.log(data);
   const { currentUser } = useCurrentUser();
   const [comment, setComment] = useState(""); //내가 쓰는 댓글
   const [commentAdd, setCommentAdd] = useState(""); //내가 쓰는 대댓글
@@ -32,21 +33,25 @@ const CommentCard = ({ data }) => {
       },
     });
     setComment("");
+    update();
     alert(response.data.message);
   };
-  const getComment = useCallback(async () => {
+  const getComment = async () => {
     //댓글 불러오기
     const response = await api.get(
       `comment/inquiry/${data.id}/${currentUser.id}/${page}`
     );
+    console.log("댓글불러오기");
     console.log(response);
     setAllComment(response.data.list);
     setCommentCount(response.data.totalSize);
     setPaginationCommentCount(response.data.realSize);
-  }, [page]);
+  };
+
   useEffect(() => {
     getComment();
-  }, [comment, commentAdd, getComment]);
+  }, [page, data]);
+
   return (
     <div>
       <h2>전체 댓글 개수:{commentCount}</h2>
@@ -58,7 +63,11 @@ const CommentCard = ({ data }) => {
         // handleKeyPress={handleKeyPress}
       />
       {allComment.map((d) => (
-        <NestedCommentCard data={d} setCommentAdd={setCommentAdd} />
+        <NestedCommentCard
+          data={d}
+          setCommentAdd={setCommentAdd}
+          update={update}
+        />
       ))}
       <Pagination
         setNumber={handlePageChange}

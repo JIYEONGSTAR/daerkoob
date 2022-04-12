@@ -36,7 +36,7 @@ const Notice = (props) => {
       {currentUser.id === 16 && (
         <button
           onClick={() => {
-            history.push(`/registerNotice`);
+            history.push(`/noticeAdmin`);
           }}
         >
           관리자용 작성버튼

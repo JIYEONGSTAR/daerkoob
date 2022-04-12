@@ -38,6 +38,13 @@ const Register = ({ isbn, location, match }) => {
       // onClose();
     }
   };
+  const handleKeyPress = (e) => {
+    //엔터키로 입력하기
+    // console.log("enter", e);
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
 
   useEffect(() => {
     const findBook = async () => {
@@ -57,6 +64,7 @@ const Register = ({ isbn, location, match }) => {
             cols="40"
             rows="10"
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           ></textarea>
           <div>
             {type === "review" && (
@@ -71,7 +79,13 @@ const Register = ({ isbn, location, match }) => {
             )}
             <button onClick={handleSubmit}>저장</button>
             &nbsp;&nbsp;&nbsp;
-            {/* <button onClick={onClose}>닫기</button> */}
+            <button
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              뒤로가기
+            </button>
           </div>
         </>
       )}

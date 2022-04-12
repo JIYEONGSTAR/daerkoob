@@ -129,7 +129,7 @@ const Home = () => {
           <br />
           <div className="home__newList__line">
             {newTrans.map((d) => (
-              <NewList data={d} />
+              <NewList data={d} type="transcription" />
             ))}
           </div>
         </div>
@@ -138,7 +138,7 @@ const Home = () => {
           <br />
           <div className="home__newList__line">
             {newReview.map((d) => (
-              <NewList data={d} />
+              <NewList data={d} type="review" />
             ))}
           </div>
         </div>

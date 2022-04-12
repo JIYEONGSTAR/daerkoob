@@ -1,6 +1,7 @@
 import React from "react";
 import "components/Card/DetailCard.scss";
 const DetailCard = ({ currentBook }) => {
+  console.log(currentBook);
   return (
     <div className="detailCard">
       <div className="detailCard__img">
