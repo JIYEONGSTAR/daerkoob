@@ -51,7 +51,6 @@ const Detail = ({ match, location }) => {
             isbn={params.isbn}
             setView={() => setViewTrans(true)}
           />
-
           {currentUser.id !== 0 && (
             <button
               onClick={() =>
@@ -63,10 +62,11 @@ const Detail = ({ match, location }) => {
                 })
               }
             >
-              필사작성하러가기
+              필사 작성
             </button>
           )}
         </div>
+
         <div className="detail__list__review">
           <DetailList
             type="review"
@@ -85,7 +85,7 @@ const Detail = ({ match, location }) => {
                 })
               }
             >
-              리뷰작성하러가기
+              리뷰 작성
             </button>
           )}
         </div>

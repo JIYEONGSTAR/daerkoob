@@ -1,8 +1,49 @@
 .detailCard {
-  background-color: yellow;
-  display: flex;
+  display: grid;
+  width: 630px;
+  max-width: 100%;
+  max-height: 280px;
+  grid-template-columns: 180px calc(98% - 180px);
+  grid-column-gap: 2%;
+  margin-top: 30px;
+  &__img {
+    width: 180px;
+    height: 280px;
+  }
   &__text {
+    max-height: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
+    
+    &__info {
+      display: flex;
+      flex-direction: column;
+      &__title {
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        text-align: start;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: x-large;
+      }
+      &__author, &__publisher, &__pubdate {
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        text-align: start;
+        box-sizing: border-box;
+      }
+    }
+  }
+  &__description {
+    display: flex;
+    text-align: justify;
+    padding-top: 16px;
   }
 }

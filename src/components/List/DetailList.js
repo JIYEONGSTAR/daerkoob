@@ -65,15 +65,17 @@ const DetailList = ({ type, isbn, setView }) => {
   return (
     <>
       <div className="detail__list__type">
-        {type === "review" ? <>리뷰 </> : <>필사</>}
+        {type === "review" ? <h3>이 책의 리뷰 </h3> : <h3>이 책의 필사</h3>}
       </div>
       {size === 0 ? (
         <div>내용이 없습니다</div>
       ) : (
         <EachDetailList list={list} type={type} />
       )}
-
-      {size > 5 && <button onClick={() => setView()}>더보기</button>}
+      <div className="detail__list__trans__button">
+        {/* <div className="detail__list__review__button"> */}
+        {size > 5 && <button onClick={() => setView()}>더보기</button>}
+      </div>
     </>
   );
 };

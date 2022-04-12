@@ -1,33 +1,76 @@
 @import "Styles/variable.scss";
 .detail {
-  // margin-top: 70px;
+  margin-top: 70px;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   align-items: center;
 
   &__list {
+    width: 80vw;
+    min-height: 200px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 90%;
-    grid-gap: 10px;
+    grid-template-columns: 47.5% 47.5%;
+    grid-column-gap: 5%;
+    margin: 30px 0 30px 0;
+
+    &__empty {
+      line-height: 2.5;
+      text-align: center;
+    }
+
+    &__trans, &__review {
+      width: 100%;
+      max-width: 100%;
+      min-height: 250px;
+      overflow-x: auto;
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+      align-items: center;
+    }
+
+    &__trans__button, &__review__button{
+      display: flex;
+      max-height: 40px;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+
     &__type {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-    &__one {
-      display: flex;
       width: 100%;
-      justify-content: space-between;
+      line-height: 2.5;
+      max-width: 100%;
+      border-bottom: 2px solid;
     }
-    &__title {
-      display: block;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+
+    &__one {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      color: gray;
+      line-height: 2.5;
+      justify-content: space-between;
+      border-bottom: 1px solid gray;
+      &__title {
+        width: 65%;
+        max-width: 65%;
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: start;
+        overflow: hidden;
+      }
+      &__nickName {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: start;
+      }
     }
   }
   > button {

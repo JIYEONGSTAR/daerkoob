@@ -10,6 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100vw;
+  max-width: 100%;
 }
 input {
   all: unset;
@@ -22,7 +23,8 @@ input {
 // }
 button {
   all: unset;
-  padding: 9px 25px;
+  white-space: nowrap;
+  padding: 9px 20px;
   background-color: $mainColor;
   border: none;
   border-radius: 25px;
