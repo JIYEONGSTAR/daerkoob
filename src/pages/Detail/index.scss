@@ -8,19 +8,35 @@
   align-items: center;
 
   &__list {
+    width: 80vw;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 90%;
-    grid-gap: 10px;
+
+    grid-template-columns: 47.5% 47.5%;
+    grid-column-gap: 5%;
+
+    margin: 30px 0 30px 0;
+
+    &__trans__button, &__review__button{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+    
     &__type {
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      max-width: 100%;
+      border-bottom: 2px solid;
     }
     &__one {
-      display: flex;
       width: 100%;
-      justify-content: space-between;
+        display: flex;
+        color: gray;
+        line-height: 2.5;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
     }
     &__title {
       display: block;
