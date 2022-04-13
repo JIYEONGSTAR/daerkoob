@@ -7,8 +7,8 @@ import Auth from "../pages/Auth";
 import Form from "../pages/Form";
 import Navbar from "Layout/Navbar";
 import Footer from "Layout/Footer";
-import Notice from "../pages/Notice/index";
-import Detail from "../pages/Detail";
+import Notice from "pages/Notice";
+import Detail from "pages/Detail";
 import useCurrentUser from "Hooks/useCurrentUser";
 import FriendPage from "pages/Mypage/FriendPage";
 import NotFound from "pages/NotFound";
@@ -16,6 +16,7 @@ import Register from "pages/Register";
 import ReviewDetail from "pages/Detail/ReviewDetail";
 import TransDetail from "pages/Detail/TransDetail";
 import NoticeAdmin from "pages/Notice/NoticeAdmin";
+import NoticeDetail from "pages/Notice/NoticeDetail";
 const Router = () => {
   const { currentUser } = useCurrentUser();
   const pushWhenSignedIn = (Component) =>
@@ -45,6 +46,7 @@ const Router = () => {
         <Route exact path="/auth" component={Auth} />
         <Route exact path="/form" component={Form} />
         <Route exact path="/notice" component={Notice} />
+        <Route exact path="/noticeDetail/:id" component={NoticeDetail} />
         <Route path="/noticeAdmin" component={NoticeAdmin} />
         <Route exact path="/detail/:isbn" component={Detail} />
         <Route exact path="/register/:isbn" component={Register} />

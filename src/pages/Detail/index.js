@@ -7,6 +7,7 @@ import "./index.scss";
 import { useHistory } from "react-router-dom";
 import DetailCard from "components/Card/DetailCard";
 import WholeList from "components/List/WholeList";
+
 const Detail = ({ match, location }) => {
   const history = useHistory();
   const { currentUser } = useCurrentUser();
@@ -25,20 +26,26 @@ const Detail = ({ match, location }) => {
   console.log(currentBook);
   if (viewTrans) {
     return (
-      <WholeList
-        type="transcription"
-        isbn={params.isbn}
-        onClose={() => setViewTrans(false)}
-      />
+      <div className="detail">
+        <DetailCard currentBook={currentBook} />
+        <WholeList
+          type="transcription"
+          isbn={params.isbn}
+          onClose={() => setViewTrans(false)}
+        />
+      </div>
     );
   }
   if (viewReview) {
     return (
-      <WholeList
-        type="review"
-        isbn={params.isbn}
-        onClose={() => setViewReview(false)}
-      />
+      <div className="detail">
+        <DetailCard currentBook={currentBook} />
+        <WholeList
+          type="review"
+          isbn={params.isbn}
+          onClose={() => setViewReview(false)}
+        />
+      </div>
     );
   }
   return (
@@ -51,20 +58,6 @@ const Detail = ({ match, location }) => {
             isbn={params.isbn}
             setView={() => setViewTrans(true)}
           />
-          {/* {currentUser.id !== 0 && (
-            <button
-              onClick={() =>
-                history.push({
-                  pathname: `/register/${params.isbn}`,
-                  state: {
-                    type: "transcription",
-                  },
-                })
-              }
-            >
-              필사 작성
-            </button>
-          )} */}
         </div>
 
         <div className="detail__list__review">
@@ -73,21 +66,6 @@ const Detail = ({ match, location }) => {
             isbn={params.isbn}
             setView={() => setViewReview(true)}
           />
-
-          {/* {currentUser.id !== 0 && (
-            <button
-              onClick={() =>
-                history.push({
-                  pathname: `/register/${params.isbn}`,
-                  state: {
-                    type: "review",
-                  },
-                })
-              }
-            >
-              리뷰 작성
-            </button>
-          )} */}
         </div>
       </div>
     </div>
