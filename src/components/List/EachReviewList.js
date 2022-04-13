@@ -7,7 +7,6 @@ const EachReviewList = ({ each, isbn }) => {
   return (
     <>
       <tr
-        className=""
         onClick={() =>
           history.push({
             pathname: `/reviewDetail/${each.id}/`,
