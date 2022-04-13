@@ -31,11 +31,10 @@ const WholeList = ({ isbn, type, onClose }) => {
   if (!list) return <Loading />;
   return (
     <div className="wholeList">
-      <button onClick={onClose}>닫기</button>
       {/* {list.length === 0 && <>내용이없습니다</>} */}
       {type === "review" ? (
         <>
-          <table>
+          <table className="wholeList__table">
             <tr>
               <th>내용</th>
               <th>쓴 사람</th>
@@ -64,6 +63,7 @@ const WholeList = ({ isbn, type, onClose }) => {
         </>
       )}
       <Pagination setNumber={handlePageChange} total={totalPage} page={page} />
+      <button onClick={onClose}>닫기</button>
     </div>
   );
 };

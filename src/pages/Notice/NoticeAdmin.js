@@ -38,3 +38,67 @@
 // };
 
 // export default NoticeAdmin;
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import api from "api/api";
+const NoticeAdmin = () => {
+  const history = useHistory();
+  const [register, setRegister] = useState({
+    title: "",
+    content: "",
+  });
+  const handleChange = (e) => {
+    const {
+      target: { value, id },
+    } = e;
+    console.log("id", id, "value", value);
+    setRegister({ ...register, [id]: value });
+  };
+  const handleSubmit = async () => {
+    const response = await api.post(`notice/register`, null, {
+      params: {
+        title: register.title,
+        content: register.content,
+      },
+    });
+    console.log(response);
+    history.push("/notice");
+  };
+  return (
+    <div style={{ marginTop: "70px" }}>
+      <textarea
+        className="register__input__area"
+        id="title"
+        value={register.title}
+        cols="80"
+        rows="1"
+        minlength="1"
+        maxlength="10000"
+        onChange={handleChange}
+        placeholder="제목을 작성하세요"
+      ></textarea>
+      <textarea
+        className="register__input__area"
+        id="content"
+        value={register.content}
+        cols="80"
+        rows="25"
+        minlength="1"
+        maxlength="10000"
+        onChange={handleChange}
+        placeholder="내용을 작성하세요"
+      ></textarea>
+
+      <button
+        onClick={() => {
+          history.goBack();
+        }}
+      >
+        뒤로가기
+      </button>
+      <button onClick={handleSubmit}>저장</button>
+    </div>
+  );
+};
+
+export default NoticeAdmin;

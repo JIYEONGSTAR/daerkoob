@@ -51,7 +51,7 @@ const Detail = ({ match, location }) => {
             isbn={params.isbn}
             setView={() => setViewTrans(true)}
           />
-          {currentUser.id !== 0 && (
+          {/* {currentUser.id !== 0 && (
             <button
               onClick={() =>
                 history.push({
@@ -64,7 +64,7 @@ const Detail = ({ match, location }) => {
             >
               필사 작성
             </button>
-          )}
+          )} */}
         </div>
 
         <div className="detail__list__review">
@@ -74,7 +74,7 @@ const Detail = ({ match, location }) => {
             setView={() => setViewReview(true)}
           />
 
-          {currentUser.id !== 0 && (
+          {/* {currentUser.id !== 0 && (
             <button
               onClick={() =>
                 history.push({
@@ -87,7 +87,7 @@ const Detail = ({ match, location }) => {
             >
               리뷰 작성
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>

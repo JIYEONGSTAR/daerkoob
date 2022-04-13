@@ -14,7 +14,12 @@ const NoticeDetail = ({ match }) => {
     setData(response.data);
   };
   const handleDelete = async (id) => {
-    // const response = await api.delete(``)
+    console.log(id);
+    const response = await api.post(`notice/delete`, null, {
+      params: {
+        id: id,
+      },
+    });
   };
   useEffect(() => {
     findData();
