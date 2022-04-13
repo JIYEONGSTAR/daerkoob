@@ -7,14 +7,14 @@ import useCurrentUser from "Hooks/useCurrentUser";
 import Loading from "Contents/Loading";
 import { useHistory } from "react-router-dom";
 const BulletinCard = ({ data, type, onThumb }) => {
-  // console.log("bulletinCard", type, d);
+  //  //console.log("bulletinCard", type, d);
   const history = useHistory();
-  console.log(data);
+  //console.log(data);
   // const user = data.user;
   const { currentUser } = useCurrentUser();
   // const data = d[0];
   // const data = d[0];
-  // console.log("d.list[0]", d.list);
+  //  //console.log("d.list[0]", d.list);
   // const data = null;
   const handleThumb = async (d) => {
     type === "review"
@@ -33,8 +33,8 @@ const BulletinCard = ({ data, type, onThumb }) => {
     onThumb();
   };
   const deleteContext = async (d) => {
-    console.log(d);
-    console.log(typeof d.id);
+    //console.log(d);
+    //console.log(typeof d.id);
     type === "review"
       ? await api.post(`${type}/delete`, null, {
           params: {
@@ -55,7 +55,7 @@ const BulletinCard = ({ data, type, onThumb }) => {
     return <Loading />;
   }
   if (data) {
-    console.log(data);
+    //console.log(data);
     return (
       <div>
         <div>글내용:{data.content}</div>
