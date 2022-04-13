@@ -35,35 +35,47 @@ const WholeList = ({ isbn, type, onClose }) => {
       {type === "review" ? (
         <>
           <table className="wholeList__table">
-            <tr>
-              <th>내용</th>
-              <th>쓴 사람</th>
-              <th>쓴 날짜</th>
-              <th>별점</th>
-              <th>좋아요 수</th>
-            </tr>
-            {list.map((each) => (
-              <EachReviewList each={each} />
-            ))}
+            <thead>
+              <tr>
+                <th>내용</th>
+                <th>쓴 사람</th>
+                <th>쓴 날짜</th>
+                <th>별점</th>
+                <th>좋아요 수</th>
+              </tr>
+            </thead>
+            <tbody>
+              {list.map((each) => (
+                <EachReviewList each={each} />
+              ))}
+            </tbody>
           </table>
         </>
       ) : (
         <>
-          <table>
-            <tr>
-              <th>내용</th>
-              <th>쓴 사람</th>
-              <th>쓴 날짜</th>
-              <th>좋아요 수</th>
-            </tr>
-            {list.map((each) => (
-              <EachTransList each={each} />
-            ))}
+          <table className="wholeList__table">
+            <thead>
+              <tr>
+                <th>내용</th>
+                <th>쓴 사람</th>
+                <th>쓴 날짜</th>
+                <th>좋아요 수</th>
+              </tr>
+            </thead>
+            <tbody>
+              {list.map((each) => (
+                <EachTransList each={each} />
+              ))}
+            </tbody>
           </table>
         </>
       )}
-      <Pagination setNumber={handlePageChange} total={totalPage} page={page} />
-      <button onClick={onClose}>닫기</button>
+      <div className="wholeList__paginationArea">
+        <Pagination setNumber={handlePageChange} total={totalPage} page={page} />
+      </div>
+      <div className="wholeList__buttonArea">
+        <button onClick={onClose}>닫기</button>
+      </div>
     </div>
   );
 };

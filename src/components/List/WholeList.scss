@@ -8,5 +8,26 @@
   align-items: center;
   &__table {
     width: 80vw;
+    border-collapse: collapse;
+  }
+  &__table thead {
+    line-height: 2.5;
+    border-bottom: 2px solid black;
+  }
+  &__table tbody tr {
+    line-height: 2.5;
+    border-bottom: 1px solid gray;
+  }
+  &__paginationArea {
+    height: 40px;
+    min-height: 40px;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  &__buttonArea{
+    margin-bottom: 16px;
   }
 }

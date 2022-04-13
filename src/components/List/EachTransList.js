@@ -4,7 +4,6 @@ const EachTransList = ({ each }) => {
   const history = useHistory();
   return (
     <tr
-      className=""
       onClick={() =>
         history.push({
           pathname: `/transDetail/${each.id}/`,
