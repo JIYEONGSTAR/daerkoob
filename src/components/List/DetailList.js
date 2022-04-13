@@ -17,17 +17,9 @@ const EachDetailList = ({ list, type }) => {
               type === "review"
                 ? history.push({
                     pathname: `/reviewDetail/${each.id}/`,
-                    // state: {
-                    //   data: each,
-                    // },
-                    //안넣어도 됨
                   })
                 : history.push({
                     pathname: `/transDetail/${each.id}/`,
-                    // state: {
-                    //   data: each,
-                    // },
-                    //안넣어도 됨
                   });
             }}
           >

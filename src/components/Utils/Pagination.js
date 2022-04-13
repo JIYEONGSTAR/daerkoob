@@ -6,13 +6,15 @@ const PageNum = ({ index, handlePageChange, thisPage }) => {
   return (
     <>
       {thisPage === index ? (
-        <div className="paginationButton_isSelected"
+        <div
+          className="paginationButton__isSelected"
           onClick={() => handlePageChange(index)}
         >
           {index + 1}
         </div>
       ) : (
         <div
+          className="paginationButton__isNotSelected"
           onClick={() => handlePageChange(index)}
         >
           {index + 1}

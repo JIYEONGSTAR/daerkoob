@@ -44,7 +44,7 @@ const WholeList = ({ isbn, type, onClose }) => {
               <th>좋아요 수</th>
             </tr>
             {list.map((each) => (
-              <EachReviewList each={each} isbn={isbn} />
+              <EachReviewList each={each} />
             ))}
           </table>
         </>
@@ -58,7 +58,7 @@ const WholeList = ({ isbn, type, onClose }) => {
               <th>좋아요 수</th>
             </tr>
             {list.map((each) => (
-              <EachTransList each={each} isbn={isbn} />
+              <EachTransList each={each} />
             ))}
           </table>
         </>
