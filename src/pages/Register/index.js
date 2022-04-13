@@ -24,7 +24,7 @@ const Register = ({ isbn, location, match }) => {
   // const type =
   const handleSubmit = async () => {
     let isSubmit = window.confirm("저장하시겠습니까?");
-    if(isSubmit){
+    if (isSubmit) {
       const response = await api.post(`${type}/register`, null, {
         params: {
           userId: currentUser.id,
@@ -33,11 +33,13 @@ const Register = ({ isbn, location, match }) => {
           score: score,
         },
       });
-  
-      if (response.data) {
+      console.log(response);
+      if (response.data.flag) {
         alert("저장했습니다.");
         history.push(`/detail/${params.isbn}`);
         // onClose();
+      } else {
+        alert(response.data.message);
       }
     }
   };
@@ -60,7 +62,7 @@ const Register = ({ isbn, location, match }) => {
     <div className="register">
       {currentBook && (
         <>
-        <DetailCard currentBook={currentBook} />
+          <DetailCard currentBook={currentBook} />
           <div className="register__input">
             {type === "review" && (
               <div className="register__input__rating">
