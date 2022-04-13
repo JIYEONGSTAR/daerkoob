@@ -1,0 +1,21 @@
+@import "Styles/variable.scss";
+
+.paginationButton {
+    display: flex;
+    font-weight: bold;
+
+    > div {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50px;
+        background-color: $mainColor;
+        color: white;
+    }
+    
+    &__isSelected {
+        background-color: $darkColor;
+    }
+}

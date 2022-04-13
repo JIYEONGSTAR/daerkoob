@@ -13,4 +13,3 @@
 // };
 
 // export default NoticeAdmin;
-//어드민 노티스 만들기

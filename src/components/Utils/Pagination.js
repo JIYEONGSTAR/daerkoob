@@ -1,23 +1,22 @@
 import React from "react";
+import "./Pagination.scss";
 
 const PageNum = ({ index, handlePageChange, thisPage }) => {
   console.log(thisPage);
   return (
     <>
       {thisPage === index ? (
-        <button
+        <div className="paginationButton_isSelected"
           onClick={() => handlePageChange(index)}
-          style={{ cursor: "pointer", width: "10px", backgroundColor: "red" }}
         >
           {index + 1}
-        </button>
+        </div>
       ) : (
-        <button
+        <div
           onClick={() => handlePageChange(index)}
-          style={{ cursor: "pointer", width: "10px" }}
         >
           {index + 1}
-        </button>
+        </div>
       )}
     </>
   );
@@ -28,12 +27,8 @@ const Pagination = ({ setNumber, total, page }) => {
     // console.log(num);
   };
   // console.log("page", page);
-  const style = {
-    display: "flex",
-    gap: "10px",
-  };
   return (
-    <div style={style}>
+    <div className="paginationButton">
       {[...Array(parseInt(1 + (total - 1) / 10))].map((e, i) => (
         <PageNum
           index={i}
