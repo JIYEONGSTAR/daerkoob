@@ -1,5 +1,12 @@
 @import "Styles/variable.scss";
 .wholeList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   margin-top: 70px;
   min-height: 90vh;
+  align-items: center;
+  &__table {
+    width: 80vw;
+  }
 }
