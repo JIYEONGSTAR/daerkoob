@@ -30,11 +30,27 @@ const NestedCommentCard = ({ data, setCommentAdd, update }) => {
     update();
     setCommentRegister(false);
   };
+  const handleThumb = async (data) => {
+    const response = await api.post("thumb/comment", null, {
+      params: {
+        userIndex: currentUser.id,
+        commentId: data.id,
+      },
+    });
+    update();
+  };
   return (
     <div>
       <h4>{d.writer.nickName}</h4>
       {d.content}
+      <div onClick={() => handleThumb(data)} style={{ cursor: "pointer" }}>
+        {d.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
+        {d.thumbCount}
+      </div>
+
       <button onClick={() => setCommentRegister(!commentRegister)}>
+        {console.log(d)}
+
         <pre> &#09;댓글달기</pre>
       </button>
       {commentRegister && (
