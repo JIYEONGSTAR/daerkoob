@@ -1,14 +1,18 @@
 import React from "react";
 import api from "api/api";
 import { useHistory } from "react-router-dom";
+import useCurrentUser from "Hooks/useCurrentUser";
 const FollowingList = ({ list, onClose }) => {
+  const { currentUser } = useCurrentUser();
   const history = useHistory();
   const clickFriend = async (nickName) => {
     const response = await api.post("user/find", null, {
       params: {
+        userId: currentUser.id,
         nickName: nickName,
       },
     });
+    onClose();
     alert(response.data.message.message);
     console.log(response);
     response.data.message.flag &&
