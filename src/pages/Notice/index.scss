@@ -2,6 +2,59 @@
 .notice {
   margin-top: 70px;
   display: grid;
-  min-height: 90vh;
-  background-color: $mainColor;
+  text-align: center;
+  justify-items: center;
+}
+
+.noticeList {
+  display: table;
+  width: 80vw;
+  line-height: 2.5;
+  white-space: nowrap;
+  border-collapse: collapse;
+  border-spacing: 0;
+  &__header{
+    border-bottom: 3px solid black;
+  }
+  border-bottom: 2px solid black;
+}
+
+.noticeLine {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  align-items: center;
+  display: flex;
+  line-height: 2.5;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  &__title {
+    width: 65%;
+    max-width: 65%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    text-align: start;
+    box-sizing: border-box;
+  }
+}
+
+.pagination {
+  margin-bottom: 16px;
+  height: 40px;
+  min-height: 40px;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+  width: 80vw;
 }
