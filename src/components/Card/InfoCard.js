@@ -166,19 +166,17 @@ const InfoCard = ({ personInfo, id }) => {
               </div>
             </div>
             <div className="infoCard__top__btn">
-              <button onClick={() => setViewReviewList(true)}>
-                <p>{personInfo.reviewCount}</p> <p>리뷰</p>
-              </button>
               <button onClick={() => setViewTransList(true)}>
                 <p>{personInfo.transcriptionCount}</p>
                 <p>필사</p>
               </button>
-              {/* {id === currentUser.id && ( */}
+              <button onClick={() => setViewReviewList(true)}>
+                <p>{personInfo.reviewCount}</p> <p>리뷰</p>
+              </button>
               <button onClick={() => setViewFriendList(true)}>
                 <p>{personInfo.friendCount}</p>
                 <p>팔로우 목록</p>
               </button>
-              {/* )} */}
             </div>
           </div>
         </div>

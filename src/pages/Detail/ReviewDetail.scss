@@ -1,0 +1,10 @@
+.reviewDetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__comments {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 2px solid gray;
+    }
+}

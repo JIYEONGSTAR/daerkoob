@@ -4,6 +4,8 @@ import useCurrentUser from "Hooks/useCurrentUser";
 import CommentInputCard from "components/Card/CommentInputCard";
 import NestedCommentCard from "components/Card/NestedCommentCard";
 import Pagination from "components/Utils/Pagination";
+import "./CommentCard.scss";
+
 const CommentCard = ({ data, update }) => {
   console.log(data);
   const { currentUser } = useCurrentUser();
@@ -53,8 +55,7 @@ const CommentCard = ({ data, update }) => {
   }, [page, data]);
 
   return (
-    <div>
-      <h2>전체 댓글 개수:{commentCount}</h2>
+    <div class="commentCard">
       <CommentInputCard
         // 댓글쓰는input
         comment={comment}
@@ -69,11 +70,13 @@ const CommentCard = ({ data, update }) => {
           update={update}
         />
       ))}
-      <Pagination
-        setNumber={handlePageChange}
-        total={paginationCommentCount}
-        page={page}
-      />
+      <div className="commentCard__pagination">
+        <Pagination
+          setNumber={handlePageChange}
+          total={paginationCommentCount}
+          page={page}
+        />
+      </div>
     </div>
   );
 };

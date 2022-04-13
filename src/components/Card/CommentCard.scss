@@ -1,0 +1,28 @@
+.commentCard {
+    width: 80vw;
+    &__nested {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        border-top: 1px solid gray;
+        &__context {
+            display: flex;
+            justify-content: space-between;
+        }
+        > .addComment {
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+            border-bottom: dotted 1px gray;
+        }
+    }
+    &__pagination {
+        height: 40px;
+        min-height: 40px;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}

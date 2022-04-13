@@ -40,41 +40,46 @@ const NestedCommentCard = ({ data, setCommentAdd, update }) => {
     update();
   };
   return (
-    <div>
+    <div className="commentCard__nested">
       <h4>{d.writer.nickName}</h4>
-      {d.content}
-      <div onClick={() => handleThumb(data)} style={{ cursor: "pointer" }}>
-        {d.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
-        {d.thumbCount}
+      <div className="commentCard__nested__context">
+        {d.content}
+        <span onClick={() => handleThumb(data)} style={{ cursor: "pointer" }}>
+          {d.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
+          {d.thumbCount}
+        </span>
       </div>
 
-      <button onClick={() => setCommentRegister(!commentRegister)}>
-        {console.log(d)}
+     
+ 
+      <div>
+        <FaCaretDown onClick={handleCommentsOpen} />
+        <span>답글 {d.nestedCount}개 보기</span>
+      </div>
 
-        <pre> &#09;댓글달기</pre>
-      </button>
-      {commentRegister && (
-        <CommentInputCard
-          comment={nestedComment}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          // handleKeyPress={handleKeyPress}
-        />
-      )}
-      {d.nestedCount > 0 && (
-        <div>
-          <FaCaretDown onClick={handleCommentsOpen} />
-          <span>답글 {d.nestedCount}개 보기</span>
-        </div>
-      )}
-      {commentsOpen && d.comments && (
+      {commentsOpen &&<>
+       {/* <button onClick={() => setCommentRegister(!commentRegister)}>
+       {console.log(d)}
+
+       <pre> &#09;댓글달기</pre>
+     </button> */}
+     {/* {commentRegister && ( */}
+       <CommentInputCard
+         comment={nestedComment}
+         handleChange={handleChange}
+         handleSubmit={handleSubmit}
+         // handleKeyPress={handleKeyPress}
+       />
+     {/* )} */}
+      
+      {/* d.comments && ( */}
         <>
           {d.comments.map((c) => (
-            <div> &#45; {c.content}</div>
+            <div style={{paddingLeft: "20px"}}> &#45; {c.content}</div>
           ))}
-          <div></div>
         </>
-      )}
+      {/* ) */}
+      </>}
     </div>
   );
 };
