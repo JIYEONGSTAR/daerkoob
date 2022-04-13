@@ -5,9 +5,10 @@ import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
 import api from "api/api";
 import useCurrentUser from "Hooks/useCurrentUser";
 import Loading from "Contents/Loading";
-
+import { useHistory } from "react-router-dom";
 const BulletinCard = ({ data, type, onThumb }) => {
   // console.log("bulletinCard", type, d);
+  const history = useHistory();
   console.log(data);
   // const user = data.user;
   const { currentUser } = useCurrentUser();
@@ -32,20 +33,23 @@ const BulletinCard = ({ data, type, onThumb }) => {
     onThumb();
   };
   const deleteContext = async (d) => {
+    console.log(d);
+    console.log(typeof d.id);
     type === "review"
-      ? await api.delete(`${type}/delete`, null, {
+      ? await api.post(`${type}/delete`, null, {
           params: {
             reviewId: d.id,
             userId: currentUser.id,
           },
         })
-      : await api.delete(`${type}/delete`, null, {
+      : await api.post(`${type}/delete`, null, {
           params: {
             transcriptionId: d.id,
             userId: currentUser.id,
           },
         });
     alert("삭제되었습니다");
+    history.goBack();
   };
   if (!data.user) {
     return <Loading />;
@@ -72,7 +76,7 @@ const BulletinCard = ({ data, type, onThumb }) => {
           </button>
         </div>
         {data.user.id === currentUser.id && (
-          <button onClick={deleteContext}>내가 작성했다 삭제할거다</button>
+          <button onClick={() => deleteContext(data)}>삭제</button>
         )}
       </div>
     );
