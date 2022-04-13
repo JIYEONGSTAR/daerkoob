@@ -3,9 +3,6 @@ import { useHistory } from "react-router";
 import useCurrentUser from "Hooks/useCurrentUser";
 import api from "api/api";
 import { FaSearch } from "react-icons/fa";
-import MypageFriendsModal from "components/Modal/MypageFriendsModal";
-import MypageReviewModal from "components/Modal/MypageReviewModal";
-import MypageTransModal from "components/Modal/MypageTransModal";
 import "components/Card/InfoCard.scss";
 import Loading from "Contents/Loading";
 import MypageList from "../List/MypageList";
@@ -22,24 +19,24 @@ const InfoCard = ({ personInfo, id }) => {
   const [viewTransList, setViewTransList] = useState(false);
   const [searchFriend, setSearchFriend] = useState("");
   const [isFriend, setIsFriend] = useState(false);
-  console.log("id,currentUserId", id, currentUser.id);
-  console.log("CurrentUser", currentUser);
-  console.log("personInfo", personInfo);
+  //console.log("id,currentUserId", id, currentUser.id);
+  //console.log("CurrentUser", currentUser);
+  //console.log("personInfo", personInfo);
   const init = async () => {
     const responseTrans = await api.get(`user/transcription/${id}`);
     setMyTransList([...responseTrans.data]);
-    // console.log(yTransList);
+    //  //console.log(yTransList);
     const responseReview = await api.get(`user/review/${id}`);
     setMyReviewList([...responseReview.data]);
     const confirm = currentUser.friends.filter(
       (each) => {
         each.friendIndex === Number(id) && setIsFriend(true);
-        // console.log(each);
+        //  //console.log(each);
       }
-      // {console.log(each)}
+      // { //console.log(each)}
     );
   };
-  console.log(isFriend);
+  //console.log(isFriend);
   // const gotoFriendPage = (friendId) => {
   //   history.push({
   //     pathname: `/friendPage/${friendId}`,
@@ -56,7 +53,7 @@ const InfoCard = ({ personInfo, id }) => {
       },
     });
     alert(response.data.message.message);
-    console.log(response);
+    //console.log(response);
     response.data.message.flag &&
       history.push({
         pathname: `/friendPage/${response.data.list[0].id}`,
@@ -72,31 +69,31 @@ const InfoCard = ({ personInfo, id }) => {
         friendId: id,
       },
     });
-    console.log(response);
+    //console.log(response);
     alert(response.data.message.message);
     history.push("/mypage");
   };
   const deleteFriend = async (d) => {
-    console.log(d);
+    //console.log(d);
     const response = await api.post("friend/delete", null, {
       params: {
         userId: currentUser.id,
         friendId: d.id,
       },
     });
-    console.log(response);
+    //console.log(response);
     alert(response.data.message.message);
     history.push("/mypage");
   };
   // let test = currentUser.friends.filter(
   //   (each) => each.friendIndex === Number(id)
   // );
-  // console.log(test);
+  //  //console.log(test);
 
   useEffect(() => {
     init();
   }, [id]);
-  // console.log(personInfo);
+  //  //console.log(personInfo);
   if (viewTransList) {
     return (
       <MypageList
