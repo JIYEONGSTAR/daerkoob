@@ -43,6 +43,8 @@
   }
   &__description {
     display: flex;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
     text-align: justify;
     padding-top: 16px;
   }

@@ -118,8 +118,8 @@ const Home = () => {
         </Slider>
       </div>
       <div className="home__container">
-        <HomeCard name="전체 리뷰 수" data={totalReview} />
         <HomeCard name="전체 필사 수" data={totalTrans} />
+        <HomeCard name="전체 리뷰 수" data={totalReview} />
         <HomeCard name="등록된 책 수" data={totalBook} />
       </div>
 

@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import useCurrentUser from "Hooks/useCurrentUser";
 import api from "api/api";
 import Loading from "Contents/Loading";
+import "./ReviewDetail.scss"
 const ReviewDetail = ({ location, match }) => {
   const { currentUser } = useCurrentUser();
   const history = useHistory();
@@ -30,14 +31,9 @@ const ReviewDetail = ({ location, match }) => {
   return (
     <div className="reviewDetail">
       <BulletinCard data={data} type="review" onThumb={() => findData()} />
-      <CommentCard data={data} update={() => findData()} />
-      <button
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        뒤로가기
-      </button>
+      <div className="reviewDetail__comments">
+        <CommentCard data={data} update={() => findData()} />
+      </div>
       {/* {writer.nickName === currentUser.nickName && <div>똑같다</div>} */}
     </div>
   );

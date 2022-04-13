@@ -64,26 +64,36 @@ const BulletinCard = ({ data, type, onThumb }) => {
             <img src={data.book.image} alt="" height="280" width="180"></img>
           </div>
           <div className="bulletinCard__header__title">{data.book.title}</div>
-          <div>이 책을 읽은 <strong>{data.user.nickName}</strong>님의 {type==="review" ? "리뷰" : "필사"}</div>
+          <div className="bulletinCard__header__explain">이 책을 읽은 <strong>{data.user.nickName}</strong>님의 {type==="review" ? "리뷰" : "필사"}</div>
+          <div className="bulletinCard__header__timestamp">{data.registerDate.split("T").join(" ")}에 작성됨</div>
         </div>
         <div className="bulletinCard__body">
-          <div>글내용:{data.content}</div>
-          {/* 이거 쓰고 싶은데 안된다... 왜 안될까 */}
-          <div>{data.registerDate}</div>
+          <div>{data.content}</div>
           {type==="review"&&<div>{data.score && data.score}</div>}
-          <div>좋아요 수:{data.thumbCount}</div>
 
-          <div>
+          <div className="bulletinCard__body__like">
+            <div>이 게시물을 추천하기</div>
             <button
               onClick={() => handleThumb(data)}
               style={{ cursor: "pointer" }}
             >
               {data.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
+              &nbsp;
+              {data.thumbCount}
             </button>
           </div>
-          {data.user.id === currentUser.id && (
-            <button onClick={() => deleteContext(data)}>삭제</button>
-          )}
+          <div className="bulletinCard__body__button">
+            {data.user.id === currentUser.id && (
+              <button onClick={() => deleteContext(data)}>삭제</button>
+            )}
+            <button
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              뒤로가기
+            </button>
+          </div>
         </div>
       </div>
     );

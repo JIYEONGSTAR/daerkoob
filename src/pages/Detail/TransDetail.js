@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import useCurrentUser from "Hooks/useCurrentUser";
 import api from "api/api";
 import Loading from "Contents/Loading";
-import "./TransDetail.scss";
+import "./TransDetail.scss"
 
 const TransDetail = ({ location, match }) => {
   const { currentUser } = useCurrentUser();
@@ -44,13 +44,6 @@ const TransDetail = ({ location, match }) => {
           type="transcription"
           onThumb={() => findData()}
         />
-        <button
-          onClick={() => {
-            history.goBack();
-          }}
-        >
-          뒤로가기
-        </button>
       </div>
     );
   }

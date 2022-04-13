@@ -1,4 +1,5 @@
 import React from "react";
+import "./CommentInputCard.scss";
 
 const CommentInputCard = ({
   comment,
@@ -27,7 +28,6 @@ const CommentInputCard = ({
       <button onClick={handleSubmit} className="addComment__submit">
         저장
       </button>
-      <span className="addComment__line" />
     </div>
   );
 };
