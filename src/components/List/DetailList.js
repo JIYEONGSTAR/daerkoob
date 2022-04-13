@@ -34,6 +34,7 @@ const EachDetailList = ({ list, type }) => {
   );
 };
 const DetailList = ({ type, isbn, setView }) => {
+  const history = useHistory()
   console.log(setView);
   const { currentUser } = useCurrentUser();
   const [list, setList] = useState();
@@ -60,13 +61,27 @@ const DetailList = ({ type, isbn, setView }) => {
         {type === "review" ? <h3>이 책의 리뷰 </h3> : <h3>이 책의 필사</h3>}
       </div>
       {size === 0 ? (
-        <div>내용이 없습니다</div>
+        <div className="detail__list__type__empty">내용이 없습니다</div>
       ) : (
         <EachDetailList list={list} type={type} />
       )}
       <div className="detail__list__trans__button">
         {/* <div className="detail__list__review__button"> */}
-        {size > 5 && <button onClick={() => setView()}>더보기</button>}
+        {currentUser.id !== 0 && (
+            <button
+              onClick={() =>
+                history.push({
+                  pathname: `/register/${isbn}`,
+                  state: {
+                    type: `${type}`,
+                  },
+                })
+              }
+            >
+              {type === "review" ? `리뷰` : `필사`} 작성
+            </button>
+          )}
+          {size > 5 && <button onClick={() => setView()}>더보기</button>}
       </div>
     </>
   );

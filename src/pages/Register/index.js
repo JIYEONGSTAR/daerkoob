@@ -23,19 +23,22 @@ const Register = ({ isbn, location, match }) => {
   };
   // const type =
   const handleSubmit = async () => {
-    const response = await api.post(`${type}/register`, null, {
-      params: {
-        userId: currentUser.id,
-        isbn: params.isbn,
-        content: content,
-        score: score,
-      },
-    });
-
-    if (response.data) {
-      alert("저장했습니다.");
-      history.push(`/detail/${params.isbn}`);
-      // onClose();
+    let isSubmit = window.confirm("저장하시겠습니까?");
+    if(isSubmit){
+      const response = await api.post(`${type}/register`, null, {
+        params: {
+          userId: currentUser.id,
+          isbn: params.isbn,
+          content: content,
+          score: score,
+        },
+      });
+  
+      if (response.data) {
+        alert("저장했습니다.");
+        history.push(`/detail/${params.isbn}`);
+        // onClose();
+      }
     }
   };
   const handleKeyPress = (e) => {
@@ -57,28 +60,31 @@ const Register = ({ isbn, location, match }) => {
     <div className="register">
       {currentBook && (
         <>
-          {type}
-          <DetailCard currentBook={currentBook} />
-          <textarea
-            // className="bookDatail__input"
-            cols="40"
-            rows="10"
-            onChange={handleChange}
-            onKeyPress={handleKeyPress}
-          ></textarea>
-          <div>
+        <DetailCard currentBook={currentBook} />
+          <div className="register__input">
             {type === "review" && (
-              <ReactStars
-                className="starRating"
-                count={5}
-                onClick={ratingChanged}
-                onChange={ratingChanged}
-                size={40}
-                color2={"#ffd700"}
-              />
+              <div className="register__input__rating">
+                <h3>이 책 평가하기</h3>
+                <ReactStars
+                  className="starRating"
+                  count={5}
+                  onClick={ratingChanged}
+                  onChange={ratingChanged}
+                  size={40}
+                  color2={"#ffd700"}
+                />
+              </div>
             )}
-            <button onClick={handleSubmit}>저장</button>
-            &nbsp;&nbsp;&nbsp;
+            <textarea
+              className="register__input__area"
+              cols="80"
+              rows="25"
+              minlength="1"
+              maxlength="10000"
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          <div className="register__button">
             <button
               onClick={() => {
                 history.goBack();
@@ -86,6 +92,7 @@ const Register = ({ isbn, location, match }) => {
             >
               뒤로가기
             </button>
+            <button onClick={handleSubmit}>저장</button>
           </div>
         </>
       )}
