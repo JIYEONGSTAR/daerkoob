@@ -6,15 +6,12 @@ const FriendPage = ({ match, location }) => {
   const id = match.params.id;
   console.log(location.state.personInfo);
   const personInfo = location.state.personInfo;
-  const year = new Date().getFullYear();
+
   // console.log(personInfo);
   if (personInfo) {
     return (
       <div className="friendPage">
         <InfoCard personInfo={personInfo} id={id} />
-        <div className="grass">
-          <Grass userId={id} year={year} />
-        </div>
       </div>
     );
   }

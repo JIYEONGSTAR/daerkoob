@@ -9,7 +9,11 @@ import MypageTransModal from "components/Modal/MypageTransModal";
 import "components/Card/InfoCard.scss";
 import Loading from "Contents/Loading";
 import MypageList from "../List/MypageList";
+import Grass from "components/Card/Grass";
+import FollowingList from "components/List/FollowingList";
 const InfoCard = ({ personInfo, id }) => {
+  const year = new Date().getFullYear();
+
   const history = useHistory();
   const { currentUser } = useCurrentUser();
   const [myTransList, setMyTransList] = useState([]);
@@ -32,14 +36,14 @@ const InfoCard = ({ personInfo, id }) => {
       each.friendIndex === Number(id) ? setIsFriend(true) : setIsFriend(false)
     );
   };
-  const gotoFriendPage = (friendId) => {
-    history.push({
-      pathname: `/friendPage/${friendId}`,
-    });
-  };
-  const gotoMypage = () => {
-    history.push(`/mypage`);
-  };
+  // const gotoFriendPage = (friendId) => {
+  //   history.push({
+  //     pathname: `/friendPage/${friendId}`,
+  //   });
+  // };
+  // const gotoMypage = () => {
+  //   history.push(`/mypage`);
+  // };
   const handleSearch = async () => {
     const response = await api.post("user/find", null, {
       params: {
@@ -110,59 +114,76 @@ const InfoCard = ({ personInfo, id }) => {
       />
     );
   }
+  if (viewFriendList) {
+    return (
+      <FollowingList
+        list={currentUser.friends}
+        onClose={() => {
+          setViewFriendList(false);
+        }}
+      />
+    );
+  }
   if (!personInfo) return <Loading />;
   else {
     return (
-      <div className="infoCard">
-        <div className="infoCard__top">
-          <span className="infoCard__top__line" />
-          <div className="infoCard__top__profile">
-            <div className="infoCard__top__profile__img" />
-            <div className="infoCard__top__profile__nickname">
-              {personInfo.nickName}
-            </div>
-            {id === currentUser.id ? null : isFriend ? (
-              <div onClick={() => deleteFriend(personInfo)}>
-                이미친구입니다. 삭제하시겠습니까?
+      <>
+        <div className="infoCard">
+          <div className="infoCard__top">
+            <span className="infoCard__top__line" />
+            <div className="infoCard__top__profile">
+              <div className="infoCard__top__profile__img" />
+              <div className="infoCard__top__profile__nickname">
+                {personInfo.nickName}
               </div>
-            ) : (
-              <div onClick={followFriend}>친구추가하기</div>
-            )}
-          </div>
-          <div className="infoCard__top__friendSearch">
-            <div className="">
-              <FaSearch size="20" className="" />
-              <input
-                onClick={() => setSearchFriend("")}
-                placeholder="정확한 닉네임을 입력하세요"
-                onChange={(e) => {
-                  setSearchFriend(e.target.value);
-                }}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter") {
-                    handleSearch();
-                    // setTitle("");
-                  }
-                }}
-                value={searchFriend}
-              ></input>
+              {id === currentUser.id ? null : isFriend ? (
+                <div onClick={() => deleteFriend(personInfo)}>
+                  이미친구입니다. 삭제하시겠습니까?
+                </div>
+              ) : (
+                <div onClick={followFriend}>친구추가하기</div>
+              )}
             </div>
-          </div>
-          <div className="infoCard__top__btn">
-            <button onClick={() => setViewReviewList(true)}>
-              <p>{personInfo.reviewCount}</p> <p>리뷰</p>
-            </button>
-            <button onClick={() => setViewTransList(true)}>
-              <p>{personInfo.transcriptionCount}</p>
-              <p>필사</p>
-            </button>
-            <button onClick={() => setViewFriendList(true)}>
-              <p>{personInfo.friendCount}</p>
-              <p>팔로우 목록</p>
-            </button>
+            <div className="infoCard__top__friendSearch">
+              <div className="">
+                <FaSearch size="20" className="" />
+                <input
+                  onClick={() => setSearchFriend("")}
+                  placeholder="정확한 닉네임을 입력하세요"
+                  onChange={(e) => {
+                    setSearchFriend(e.target.value);
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch();
+                      // setTitle("");
+                    }
+                  }}
+                  value={searchFriend}
+                ></input>
+              </div>
+            </div>
+            <div className="infoCard__top__btn">
+              <button onClick={() => setViewReviewList(true)}>
+                <p>{personInfo.reviewCount}</p> <p>리뷰</p>
+              </button>
+              <button onClick={() => setViewTransList(true)}>
+                <p>{personInfo.transcriptionCount}</p>
+                <p>필사</p>
+              </button>
+              {/* {id === currentUser.id && ( */}
+              <button onClick={() => setViewFriendList(true)}>
+                <p>{personInfo.friendCount}</p>
+                <p>팔로우 목록</p>
+              </button>
+              {/* )} */}
+            </div>
           </div>
         </div>
-      </div>
+        <div className="grass">
+          <Grass userId={currentUser.id} year={year} />
+        </div>
+      </>
     );
   }
 };
