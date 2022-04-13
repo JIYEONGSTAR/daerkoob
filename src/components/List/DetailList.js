@@ -15,14 +15,17 @@ const EachDetailList = ({ list, type }) => {
             className="detail__list__one"
             onClick={() => {
               type === "review"
-                ? history.push({
+                ? each.id &&
+                  history.push({
                     pathname: `/reviewDetail/${each.id}/`,
                   })
-                : history.push({
+                : each.id &&
+                  history.push({
                     pathname: `/transDetail/${each.id}/`,
                   });
             }}
           >
+            {console.log(each)}
             <span className="detail__list__one__title">{each.content}</span>
             <span className="detail__list__one__nickName">
               {each.user.nickName}
@@ -34,7 +37,7 @@ const EachDetailList = ({ list, type }) => {
   );
 };
 const DetailList = ({ type, isbn, setView }) => {
-  const history = useHistory()
+  const history = useHistory();
   console.log(setView);
   const { currentUser } = useCurrentUser();
   const [list, setList] = useState();
@@ -48,10 +51,33 @@ const DetailList = ({ type, isbn, setView }) => {
     // console.log(size);
     response.data.list && setList(response.data.list.splice(0, 5));
   };
+
   useEffect(() => {
     findList();
+
     console.log("페이지 들어옴");
   }, []);
+  if (size < 5) {
+    if (list) {
+      console.log(list);
+      for (let i = size; i < 5; i++) {
+        console.log(i, "플러스해야함");
+        console.log(list);
+        // let newList = [
+        //   ...list,
+        //   { content: "없어요", user: { nickName: "없어" } },
+        // ];
+        // console.log(newList);
+        setList((pervState) => [
+          ...pervState,
+          { content: "", id: "", user: { nickName: "" } },
+        ]);
+        console.log(list);
+        setSize((prev) => prev + 1);
+        // console.log([...list]);
+      }
+    }
+  }
   // findList(); //화면 들어올 때 마다 새로고침
   // console.log(list.length);
   // console.log(list.length > 5);
@@ -60,28 +86,39 @@ const DetailList = ({ type, isbn, setView }) => {
       <div className="detail__list__type">
         {type === "review" ? <h3>이 책의 리뷰 </h3> : <h3>이 책의 필사</h3>}
       </div>
-      {size === 0 ? (
+
+      {size >= 5 && (
+        <>
+          {console.log(list)}
+          <EachDetailList list={list} type={type} />
+        </>
+      )}
+      {/* {size === 0 ? (
         <div className="detail__list__type__empty">내용이 없습니다</div>
       ) : (
-        <EachDetailList list={list} type={type} />
-      )}
+        <>
+          {console.log(size)}
+          {console.log(list)}
+          <EachDetailList list={list} type={type} />
+        </>
+      )} */}
       <div className="detail__list__trans__button">
         {/* <div className="detail__list__review__button"> */}
         {currentUser.id !== 0 && (
-            <button
-              onClick={() =>
-                history.push({
-                  pathname: `/register/${isbn}`,
-                  state: {
-                    type: `${type}`,
-                  },
-                })
-              }
-            >
-              {type === "review" ? `리뷰` : `필사`} 작성
-            </button>
-          )}
-          {size > 5 && <button onClick={() => setView()}>더보기</button>}
+          <button
+            onClick={() =>
+              history.push({
+                pathname: `/register/${isbn}`,
+                state: {
+                  type: `${type}`,
+                },
+              })
+            }
+          >
+            {type === "review" ? `리뷰` : `필사`} 작성
+          </button>
+        )}
+        {size > 5 && <button onClick={() => setView()}>더보기</button>}
       </div>
     </>
   );
