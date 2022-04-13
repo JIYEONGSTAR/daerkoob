@@ -72,8 +72,9 @@ const Register = ({ isbn, location, match }) => {
                   count={5}
                   onClick={ratingChanged}
                   onChange={ratingChanged}
-                  size={40}
+                  size={30}
                   color2={"#ffd700"}
+                  value={score}
                 />
               </div>
             )}

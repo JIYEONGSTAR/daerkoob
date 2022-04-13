@@ -6,6 +6,7 @@ import useCurrentUser from "Hooks/useCurrentUser";
 import Loading from "Contents/Loading";
 import { useHistory } from "react-router-dom";
 import "./BulletinCard.scss";
+import ReactStars from "react-stars"; //별점매기기
 
 const BulletinCard = ({ data, type, onThumb }) => {
   //  //console.log("bulletinCard", type, d);
@@ -58,6 +59,7 @@ const BulletinCard = ({ data, type, onThumb }) => {
   if (data) {
     //console.log(data);
     return (
+
       <div className="bulletinCard">
         <div className="bulletinCard__header">
           <div className="bulletinCard__header__img">
@@ -65,12 +67,11 @@ const BulletinCard = ({ data, type, onThumb }) => {
           </div>
           <div className="bulletinCard__header__title">{data.book.title}</div>
           <div className="bulletinCard__header__explain">이 책을 읽은 <strong>{data.user.nickName}</strong>님의 {type==="review" ? "리뷰" : "필사"}</div>
+          {type==="review"&&<div className="bulletinCard__header__rating">{data.score && <ReactStars value={data.score} size={30} edit={false}/>}</div>}
           <div className="bulletinCard__header__timestamp">{data.registerDate.split("T").join(" ")}에 작성됨</div>
         </div>
         <div className="bulletinCard__body">
           <div>{data.content}</div>
-          {type==="review"&&<div>{data.score && data.score}</div>}
-
           <div className="bulletinCard__body__like">
             <div>이 게시물을 추천하기</div>
             <button
