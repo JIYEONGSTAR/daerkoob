@@ -30,7 +30,7 @@ const InfoCard = ({ personInfo, id }) => {
     setMyReviewList([...responseReview.data]);
     const confirm = currentUser.friends.filter(
       (each) => {
-        each.friendIndex === Number(id) && setIsFriend(true);
+        each.friendIndex === currentUser.id && setIsFriend(true);
         //  //console.log(each);
       }
       // { //console.log(each)}
@@ -175,7 +175,8 @@ const InfoCard = ({ personInfo, id }) => {
               </button>
               {/* {id === currentUser.id && ( */}
               <button onClick={() => setViewFriendList(true)}>
-                <p>{personInfo.friendCount}</p>
+                {console.log(personInfo)}
+                <p>{personInfo.friends.length}</p>
                 <p>팔로우 목록</p>
               </button>
               {/* )} */}

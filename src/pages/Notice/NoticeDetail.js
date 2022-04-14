@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import api from "api/api";
 import useCurrentUser from "Hooks/useCurrentUser";
 import Loading from "Contents/Loading";
+import { useHistory } from "react-router-dom";
 const NoticeDetail = ({ match }) => {
+  const history = useHistory();
   const { currentUser } = useCurrentUser();
   const { params } = match;
   const id = params.id;
@@ -20,6 +22,9 @@ const NoticeDetail = ({ match }) => {
         id: id,
       },
     });
+    alert(response.data.message.message);
+    history.push("/notice");
+    // console.log(response);
   };
   useEffect(() => {
     findData();
