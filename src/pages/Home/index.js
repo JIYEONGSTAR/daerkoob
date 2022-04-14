@@ -125,8 +125,7 @@ const Home = () => {
 
       <div className="home__newList">
         <div className="home__newList__trans">
-          <h3>새로운 필사</h3>
-          <br />
+          <div className="home__newList__header"><h3>새로운 필사</h3></div>
           <div className="home__newList__line">
             {newTrans.map((d) => (
               <NewList data={d} type="transcription" />
@@ -134,8 +133,7 @@ const Home = () => {
           </div>
         </div>
         <div className="newList__review">
-          <h3>새로운 리뷰</h3>
-          <br />
+          <div className="home__newList__header"><h3>새로운 리뷰</h3></div>
           <div className="home__newList__line">
             {newReview.map((d) => (
               <NewList data={d} type="review" />

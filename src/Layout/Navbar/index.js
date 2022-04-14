@@ -46,7 +46,7 @@ const Navbar = () => {
         })
         .then((response) => {
           setCurrentBooks([...response.data]);
-          history.push("/form");
+          history.push({pathname:"/form",state:{title:title},});
         });
     } catch {
       console.log("error");

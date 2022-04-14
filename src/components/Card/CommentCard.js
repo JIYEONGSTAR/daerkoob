@@ -56,6 +56,9 @@ const CommentCard = ({ data, update }) => {
 
   return (
     <div class="commentCard">
+      <div class="commentCard__header">
+        <h3>댓글들</h3>
+      </div>
       <CommentInputCard
         // 댓글쓰는input
         comment={comment}
