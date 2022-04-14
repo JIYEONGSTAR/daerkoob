@@ -52,29 +52,31 @@ const Notice = (props) => {
   // const { currentUser } = useCurrentUser();
   return (
     <div className="notice">
-      <div className="noticeList">
-        <div className="noticeList__header">
-          <h2>공지사항</h2>
+      <div className="notice__wrapper">
+        <div className="noticeList">
+          <div className="noticeList__header">
+            <h2>공지사항</h2>
+          </div>
+          <NoticeList data={noticeList} />
         </div>
-        <NoticeList data={noticeList} />
-      </div>
-      <div className="adminButton">
-        {currentUser.id === 16 && (
-          <button
-            onClick={() => {
-              history.push(`/noticeAdmin`);
-            }}
-          >
-            관리자용 작성버튼
-          </button>
-        )}
-      </div>
-      <div className="pagination">
-        <Pagination
-          setNumber={handlePageChange}
-          total={totalPage}
-          page={page}
-        />
+        <div className="adminButton">
+          {currentUser.id === 16 && (
+            <button
+              onClick={() => {
+                history.push(`/noticeAdmin`);
+              }}
+            >
+              관리자용 작성버튼
+            </button>
+          )}
+        </div>
+        <div className="pagination">
+          <Pagination
+            setNumber={handlePageChange}
+            total={totalPage}
+            page={page}
+          />
+        </div>
       </div>
     </div>
   );

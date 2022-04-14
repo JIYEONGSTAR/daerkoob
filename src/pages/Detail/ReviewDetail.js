@@ -30,11 +30,12 @@ const ReviewDetail = ({ location, match }) => {
   if (!data) return <Loading />;
   return (
     <div className="reviewDetail">
-      <BulletinCard data={data} type="review" onThumb={() => findData()} />
-      <div className="reviewDetail__comments">
-        <CommentCard data={data} update={() => findData()} />
+      <div className="reviewDetail__wrapper">
+        <BulletinCard data={data} type="review" onThumb={() => findData()} />
+        <div className="reviewDetail__comments">
+          <CommentCard data={data} update={() => findData()} />
+        </div>
       </div>
-      {/* {writer.nickName === currentUser.nickName && <div>똑같다</div>} */}
     </div>
   );
 };

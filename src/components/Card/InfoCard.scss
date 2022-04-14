@@ -1,13 +1,21 @@
 @import "Styles/variable.scss";
 .infoCard {
-  //   height: 100%;
-  &__top {
-    height: 40vh;
-    padding-top: 20vh;
-    display: flex;
-    // flex-direction: column-reverse;
+  height: 100%;
+  background-color: $mainColor;
+  border-radius: 25px;
+  margin: 16px 0 16px 0;
+
+  &__wrapper {
     background-color: white;
-    justify-content: flex-end;
+    padding:0 16px 0 16px;
+  }
+  &__top {
+    border-radius: 25px;
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    background-color: $mainColor;
+    justify-content: center;
     // align-items: flex-end;
     &__line {
       position: absolute;
@@ -17,43 +25,50 @@
       background-color: $darkColor;
     }
     &__profile {
-      position: absolute;
-      top: 18vh;
-      left: 20vw;
+      width: 50%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      &__img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background-color: gray;
-      }
       &__nickname {
-        font-size: 1.5rem;
+        margin-bottom: 16px;
+        color: white;
+        font-size: 2rem;
       }
     }
     &__btn {
       display: flex;
-      width: 30%;
-      margin-top: 3%;
-      padding-right: 10vw;
+      justify-content: space-evenly;
+      width: 50%;
+      margin-top: 16px;
       gap: 10px;
+
       > button {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 1px dotted gray;
+        width: 70px;
+        height: 70px;
+        border-bottom: 2px solid white;
+        border-radius: 0;
+        padding: 8px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
       }
       > button:hover {
-        width: 61px;
-        height: 61px;
+        width: 70px;
+        height: 70px;
         transition: all 0.5s;
+      }
+    }
+    &__friendSearch {
+      width: 50%;
+      display: flex;
+      background-color: white;
+      border-radius: 25px;
+      padding: 5px;
+      align-items: center;
+      &__input {
+        padding-left: 8px;
       }
     }
   }

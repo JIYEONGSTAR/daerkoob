@@ -6,6 +6,13 @@
   align-items: center;
   justify-content: center;
   color: white;
+  padding-right: 5px;
+  padding-bottom: 20px;
+  &__header {
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid white;
+  }
   &__wrapper {
     &__column {
       display: grid;
@@ -72,4 +79,5 @@
 }
 .day {
   background-color: $mainColor;
+  padding: 0 5px 0 5px;
 }

@@ -28,6 +28,7 @@ const Detail = ({ match, location }) => {
     return (
       <div className="detail">
         <DetailCard currentBook={currentBook} />
+        <div style={{marginTop:"16px"}}/>
         <WholeList
           type="transcription"
           isbn={params.isbn}
@@ -40,6 +41,7 @@ const Detail = ({ match, location }) => {
     return (
       <div className="detail">
         <DetailCard currentBook={currentBook} />
+        <div style={{marginTop:"16px"}}/>
         <WholeList
           type="review"
           isbn={params.isbn}
@@ -50,22 +52,25 @@ const Detail = ({ match, location }) => {
   }
   return (
     <div className="detail">
-      <DetailCard currentBook={currentBook} />
-      <div className="detail__list">
-        <div className="detail__list__trans">
-          <DetailList
-            type="transcription"
-            isbn={params.isbn}
-            setView={() => setViewTrans(true)}
-          />
-        </div>
+      <div className="detail__wrapper">
+        <div style={{marginTop:"16px"}}/>
+        <DetailCard currentBook={currentBook} />
+        <div className="detail__list">
+          <div className="detail__list__trans">
+            <DetailList
+              type="transcription"
+              isbn={params.isbn}
+              setView={() => setViewTrans(true)}
+            />
+          </div>
 
-        <div className="detail__list__review">
-          <DetailList
-            type="review"
-            isbn={params.isbn}
-            setView={() => setViewReview(true)}
-          />
+          <div className="detail__list__review">
+            <DetailList
+              type="review"
+              isbn={params.isbn}
+              setView={() => setViewReview(true)}
+            />
+          </div>
         </div>
       </div>
     </div>

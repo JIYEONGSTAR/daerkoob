@@ -2,13 +2,13 @@
 .mypage {
   margin-top: 70px;
   display: flex;
-  // width: 100vw;
-  min-height: 90vh;
-  background-color: $mainColor;
+  width: 100%;
+  background-color: $lightColor;
   flex-direction: column;
-  // overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
 }
 .friendPage {
   margin-top: 70px;
-  background-color: $mainColor;
+  //background-color: $mainColor;
 }

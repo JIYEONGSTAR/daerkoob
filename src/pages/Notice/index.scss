@@ -4,8 +4,15 @@
   display: grid;
   text-align: center;
   justify-items: center;
+  background-color: $lightColor;
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
 }
-
 .noticeList {
   display: table;
   width: 60vw;
@@ -48,7 +55,7 @@
   margin-bottom: 16px;
   height: 40px;
   min-height: 40px;
-  width: 80vw;
+  width: 70vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
