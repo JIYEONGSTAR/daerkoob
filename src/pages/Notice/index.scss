@@ -15,7 +15,7 @@
   white-space: nowrap;
   border-collapse: collapse;
   border-spacing: 0;
-  &__header{
+  &__header {
     border-bottom: 3px solid black;
   }
   border-bottom: 2px solid black;
@@ -32,6 +32,7 @@
   line-height: 2.5;
   justify-content: space-between;
   border-bottom: 1px solid gray;
+  height: 40px;
   &__title {
     width: 65%;
     max-width: 65%;
