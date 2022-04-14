@@ -45,7 +45,7 @@ const NestedCommentCard = ({ data, setCommentAdd, update }) => {
       <div className="commentCard__nested__context">
         {d.content}
         <span onClick={() => handleThumb(data)} style={{ cursor: "pointer" }}>
-          {d.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
+          {d.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}&nbsp;
           {d.thumbCount}
         </span>
       </div>

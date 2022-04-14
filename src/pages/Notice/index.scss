@@ -8,8 +8,10 @@
 
 .noticeList {
   display: table;
-  width: 80vw;
+  width: 60vw;
+  min-height: 70vh;
   line-height: 2.5;
+  margin-top: 30px;
   white-space: nowrap;
   border-collapse: collapse;
   border-spacing: 0;
@@ -56,5 +58,5 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 16px;
-  width: 80vw;
+  width: 60vw;
 }

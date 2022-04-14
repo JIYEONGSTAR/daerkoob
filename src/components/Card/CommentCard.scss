@@ -1,5 +1,6 @@
 .commentCard {
-    width: 80vw;
+    width: 60vw;
+    margin-top: 30px;
     &__nested {
         margin-top: 8px;
         display: flex;
@@ -19,7 +20,7 @@
     &__pagination {
         height: 40px;
         min-height: 40px;
-        width: 80vw;
+        width: 60vw;
         display: flex;
         flex-direction: row;
         justify-content: center;

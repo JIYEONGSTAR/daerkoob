@@ -1,5 +1,6 @@
 .noticeDetail {
     min-height: 85vh;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8,22 +9,20 @@
     margin-top: 70px;
 
     &__header {
-        width: 80vw;
+        width: 60vw;
         display: flex;
         flex-direction: column;
-        align-items: center;
         border-bottom: 2px solid gray;
         margin: 30px 0 16px 0;
         &__title {
             width: 50%;
-            text-align: center;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow-x: hidden;
             //text-align: start;
             box-sizing: border-box;
             font-weight: bold;
-            font-size: large;
+            font-size: x-large;
             justify-content: center;
         }
         &__content {
@@ -41,11 +40,12 @@
         }
     }
     &__body {
-        width: 80vw;
+        width: 60vw;
         display: flex;
         flex-direction: column;
         &__content {
             padding-bottom: 16px;
+            min-height: 50vh;
             display: flex;
             flex-direction: column;
             border-bottom: 2px solid gray;

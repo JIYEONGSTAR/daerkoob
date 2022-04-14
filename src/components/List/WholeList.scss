@@ -7,7 +7,7 @@
   min-height: 50vh;
   align-items: center;
   &__table {
-    width: 80vw;
+    width: 60vw;
     overflow: hidden;
     white-space: nowrap;
     border-collapse: collapse;
@@ -34,7 +34,7 @@
   &__paginationArea {
     height: 40px;
     min-height: 40px;
-    width: 80vw;
+    width: 60vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
