@@ -3,6 +3,8 @@ import useCurrentUser from "Hooks/useCurrentUser";
 import api from "api/api";
 import Loading from "Contents/Loading";
 import { useHistory } from "react-router-dom";
+import {AiOutlineUnorderedList} from "react-icons/ai";
+import {AiOutlineEdit} from "react-icons/ai";
 const EachDetailList = ({ list, type }) => {
   const history = useHistory();
   if (!list) return <Loading />;
@@ -105,7 +107,10 @@ const DetailList = ({ type, isbn, setView }) => {
       <div className="detail__list__trans__button">
         {/* <div className="detail__list__review__button"> */}
         {currentUser.id !== 0 && (
-          <button
+          <div
+            className="detail__list__trans__button__more">
+            <AiOutlineEdit
+            size={16}
             onClick={() =>
               history.push({
                 pathname: `/register/${isbn}`,
@@ -113,12 +118,11 @@ const DetailList = ({ type, isbn, setView }) => {
                   type: `${type}`,
                 },
               })
-            }
-          >
-            {type === "review" ? `리뷰` : `필사`} 작성
-          </button>
+            }/>
+            &nbsp;{type === "review" ? `리뷰` : `필사`} 작성
+          </div>
         )}
-        {size > 5 && <button onClick={() => setView()}>더보기</button>}
+        {size > 5 &&<div className="detail__list__trans__button__more"><AiOutlineUnorderedList size={16} onClick={() => setView()}/>&nbsp;더보기</div>}
       </div>
     </>
   );

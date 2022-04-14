@@ -37,11 +37,11 @@ const WholeList = ({ isbn, type, onClose }) => {
           <table className="wholeList__table">
             <thead>
               <tr>
-                <th>내용</th>
-                <th>쓴 사람</th>
-                <th>쓴 날짜</th>
-                <th>별점</th>
-                <th>좋아요 수</th>
+                <th className="wholeList__table__context">내용</th>
+                <th className="wholeList__table__author">게시자</th>
+                <th className="wholeList__table__date">게시일</th>
+                <th className="wholeList__table__rating">별점</th>
+                <th className="wholeList__table__like">좋아요</th>
               </tr>
             </thead>
             <tbody>
@@ -56,10 +56,10 @@ const WholeList = ({ isbn, type, onClose }) => {
           <table className="wholeList__table">
             <thead>
               <tr>
-                <th>내용</th>
-                <th>쓴 사람</th>
-                <th>쓴 날짜</th>
-                <th>좋아요 수</th>
+                <th className="wholeList__table__context">내용</th>
+                <th className="wholeList__table__author">게시자</th>
+                <th>게시일</th>
+                <th>좋아요</th>
               </tr>
             </thead>
             <tbody>

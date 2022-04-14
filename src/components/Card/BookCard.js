@@ -31,12 +31,18 @@ const BookCard = ({ data }) => {
   };
   return (
     <div className="bookCard" onClick={handleClick}>
-        <img src={image ? image : img_link} alt="" className="bookCard__img" />
+      <div className="bookCard__context">
+        <div className="bookCard__image">
+          <img src={image ? image : img_link} alt="" height="140" width="90" className="bookCard__img" />
+        </div>
         <div className="bookCard__title">
           {title.replace(/<b>/gi, "").replace(/<\/b>/gi, "")}
         </div>
-        필사 수 : {transCount}
-        &nbsp; 리뷰 수 : {reviewCount}
+        <div className="bookCard__info">
+          <div className="bookCard__info__trans">필사 {transCount}개</div>
+          <div className="bookCard__info__review">리뷰 {reviewCount}개</div>
+        </div>
+      </div>
     </div>
   );
 };

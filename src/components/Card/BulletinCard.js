@@ -1,12 +1,13 @@
 //게시글 카드
-
 import React from "react";
 import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
 import api from "api/api";
 import useCurrentUser from "Hooks/useCurrentUser";
 import Loading from "Contents/Loading";
 import { useHistory } from "react-router-dom";
+import "./BulletinCard.scss";
 import ReactStars from "react-stars"; //별점매기기
+
 const BulletinCard = ({ data, type, onThumb }) => {
   //  //console.log("bulletinCard", type, d);
   const history = useHistory();
@@ -58,29 +59,48 @@ const BulletinCard = ({ data, type, onThumb }) => {
   if (data) {
     //console.log(data);
     return (
-      <div>
-        <div>글내용:{data.content}</div>
-        <div>글 쓴 사람:{data.user.nickName}</div>
-        {/* 이거 쓰고 싶은데 안된다... 왜 안될까 */}
 
-        <div>쓰여진 날짜{data.registerDate}</div>
-        <div>
-          글 쓴 사람이 준 별점:{data.score && <ReactStars value={data.score} />}
+      <div className="bulletinCard">
+        <div className="bulletinCard__header">
+          <div className="bulletinCard__header__img">
+            <img src={data.book.image} alt="" height="280" width="180"></img>
+          </div>
+          <div className="bulletinCard__header__title">{data.book.title}</div>
+          <div className="bulletinCard__header__explain">이 책을 읽은 <strong>{data.user.nickName}</strong>님의 {type==="review" ? "리뷰" : "필사"}</div>
+          <div className="bulletinCard__header__timestamp">{data.registerDate.split("T").join(" ")}에 작성됨</div>
         </div>
-        <div>좋아요 수:{data.thumbCount}</div>
-
-        <div>
-          내가 이 글에 대해 좋아요를 눌렀는지?
-          <button
-            onClick={() => handleThumb(data)}
-            style={{ cursor: "pointer" }}
-          >
-            {data.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
-          </button>
+        <div className="bulletinCard__body">
+          {type==="review"&&
+            <div className="bulletinCard__body__rating">
+              <h3>이 책의 별점</h3>
+              {data.score && <ReactStars value={data.score} size={30} edit={false}/>}
+            </div>
+          }
+          <div className="bulletinCard__body__text">{data.content}</div>
+          <div className="bulletinCard__body__like">
+            <div>이 게시물을 추천하기</div>
+            <button
+              onClick={() => handleThumb(data)}
+              style={{ cursor: "pointer" }}
+            >
+              {data.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
+              &nbsp;
+              {data.thumbCount}
+            </button>
+          </div>
+          <div className="bulletinCard__body__button">
+            {data.user.id === currentUser.id && (
+              <button onClick={() => deleteContext(data)}>삭제</button>
+            )}
+            <button
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              뒤로가기
+            </button>
+          </div>
         </div>
-        {data.user.id === currentUser.id && (
-          <button onClick={() => deleteContext(data)}>삭제</button>
-        )}
       </div>
     );
   }

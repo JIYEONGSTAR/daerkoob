@@ -62,6 +62,17 @@ const Register = ({ isbn, location, match }) => {
     <div className="register">
       {currentBook && (
         <>
+          {type === "review" ? (
+              <div className="register__type">
+                <h2>리뷰하기</h2>
+              </div>
+            )
+            :
+            (
+              <div className="register__type">
+                <h2>필사하기</h2>
+              </div>
+            )}
           <DetailCard currentBook={currentBook} />
           <div className="register__input">
             {type === "review" && (
@@ -72,7 +83,7 @@ const Register = ({ isbn, location, match }) => {
                   count={5}
                   onClick={ratingChanged}
                   onChange={ratingChanged}
-                  size={40}
+                  size={30}
                   color2={"#ffd700"}
                   value={score}
                 />
