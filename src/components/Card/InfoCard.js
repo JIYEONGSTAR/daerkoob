@@ -96,34 +96,44 @@ const InfoCard = ({ personInfo, id }) => {
   //  //console.log(personInfo);
   if (viewTransList) {
     return (
-      <MypageList
-        list={myTransList}
-        type="transcription"
-        onClose={() => {
-          setViewTransList(false);
-        }}
-      />
+      <div className="infoCard__wrapper">
+      
+        <MypageList
+          list={myTransList}
+          type="transcription"
+          onClose={() => {
+            setViewTransList(false);
+          }}
+        />
+      
+      </div>
     );
   }
   if (viewReviewList) {
     return (
-      <MypageList
-        list={myReviewList}
-        type="review"
-        onClose={() => {
-          setViewReviewList(false);
-        }}
-      />
+      
+      <div className="infoCard__wrapper">
+        <MypageList
+          list={myReviewList}
+          type="review"
+          onClose={() => {
+            setViewReviewList(false);
+          }}
+        />
+      </div>
+      
     );
   }
   if (viewFriendList) {
     return (
-      <FollowingList
-        list={personInfo.friends}
-        onClose={() => {
-          setViewFriendList(false);
-        }}
-      />
+      <div>
+        <FollowingList
+          list={personInfo.friends}
+          onClose={() => {
+            setViewFriendList(false);
+          }}
+        />
+      </div>
     );
   }
   if (!personInfo) return <Loading />;
@@ -132,39 +142,37 @@ const InfoCard = ({ personInfo, id }) => {
       <>
         <div className="infoCard">
           <div className="infoCard__top">
-            <span className="infoCard__top__line" />
             <div className="infoCard__top__profile">
-              <div className="infoCard__top__profile__img" />
               <div className="infoCard__top__profile__nickname">
                 {personInfo.nickName}
               </div>
               {id === currentUser.id ? null : isFriend ? (
                 <div onClick={() => deleteFriend(personInfo)}>
-                  이미친구입니다. 삭제하시겠습니까?
+                  이미 친구입니다. 삭제하시겠습니까?
                 </div>
               ) : (
-                <div onClick={followFriend}>친구추가하기</div>
+                <div onClick={followFriend}>친구 추가</div>
               )}
-            </div>
-            <div className="infoCard__top__friendSearch">
-              <div className="">
-                <FaSearch size="20" className="" />
-                <input
-                  onClick={() => setSearchFriend("")}
-                  placeholder="정확한 닉네임을 입력하세요"
-                  onChange={(e) => {
-                    setSearchFriend(e.target.value);
-                  }}
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      handleSearch();
-                      // setTitle("");
-                    }
-                  }}
-                  value={searchFriend}
-                ></input>
+              <div className="infoCard__top__friendSearch">
+                {/* <div className="infoCard__top__friendSearch__input"> */}
+                  <FaSearch size="20" className="infoCard__top__friendSearch__icon" />
+                  <input
+                    className="infoCard__top__friendSearch__input"
+                    onClick={() => setSearchFriend("")}
+                    placeholder="정확한 닉네임을 입력하세요"
+                    onChange={(e) => {
+                      setSearchFriend(e.target.value);
+                    }}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSearch();
+                        // setTitle("");
+                      }
+                    }}
+                    value={searchFriend}
+                  ></input>
+                {/* </div> */}
               </div>
-            </div>
             <div className="infoCard__top__btn">
               <button onClick={() => setViewTransList(true)}>
                 <p>{personInfo.transcriptionCount}</p>
@@ -176,13 +184,15 @@ const InfoCard = ({ personInfo, id }) => {
               <button onClick={() => setViewFriendList(true)}>
                 {console.log(personInfo)}
                 <p>{personInfo.friends.length}</p>
-                <p>팔로우 목록</p>
+                <p>팔로우</p>
               </button>
             </div>
           </div>
         </div>
-        <div className="grass">
-          <Grass userId={currentUser.id} year={year} />
+          <div className="grass">
+            <div className="grass__header"><h3>독서 후, 하루 한 줄.</h3></div>
+            <Grass userId={currentUser.id} year={year} />
+          </div>
         </div>
       </>
     );

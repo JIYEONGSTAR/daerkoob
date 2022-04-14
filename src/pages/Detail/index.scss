@@ -1,12 +1,15 @@
 @import "Styles/variable.scss";
 .detail {
-  margin-top: 100px;
-  min-height: 90vh;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
-
+  background-color: $lightColor;
+  &__wrapper{
+    background-color: white;
+    padding:0 16px 0 16px;
+  }
   &__list {
     width: 80vw;
     min-height: 200px;

@@ -32,7 +32,7 @@ export const SignUp = ({ toggleIsSignIn }) => {
         })
         .then((response) => {
           if (response.data.flag) {
-            alert("회원가입 성공 ");
+            alert("회원 가입 성공 ");
             toggleIsSignIn(); //회원가입 하고 바로 로그인페이지로 가기
           } else {
             alert(response.data.message);
@@ -104,7 +104,7 @@ export const SignUp = ({ toggleIsSignIn }) => {
         회원가입하기
       </button>
       <span className="auth__noti">
-        계정이 있으신가요? &nbsp;&nbsp;
+        이미 계정이 있으신가요? &nbsp;&nbsp;
         <strong onClick={toggleIsSignIn}>로그인</strong>
       </span>
     </div>

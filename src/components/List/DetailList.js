@@ -108,21 +108,20 @@ const DetailList = ({ type, isbn, setView }) => {
         {/* <div className="detail__list__review__button"> */}
         {currentUser.id !== 0 && (
           <div
-            className="detail__list__trans__button__more">
-            <AiOutlineEdit
-            size={16}
-            onClick={() =>
+            className="detail__list__trans__button__more" onClick={() =>
               history.push({
                 pathname: `/register/${isbn}`,
                 state: {
                   type: `${type}`,
                 },
               })
-            }/>
+            }>
+            <AiOutlineEdit
+            size={16}/>
             &nbsp;{type === "review" ? `리뷰` : `필사`} 작성
           </div>
         )}
-        {size > 5 &&<div className="detail__list__trans__button__more"><AiOutlineUnorderedList size={16} onClick={() => setView()}/>&nbsp;더보기</div>}
+        {size > 5 &&<div className="detail__list__trans__button__more" onClick={() => setView()} ><AiOutlineUnorderedList size={16}/>&nbsp;더보기</div>}
       </div>
     </>
   );

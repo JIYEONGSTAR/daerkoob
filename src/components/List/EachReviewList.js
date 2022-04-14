@@ -13,11 +13,11 @@ const EachReviewList = ({ each, isbn }) => {
           })
         }
       >
-        <td className="">{each.content}</td>
-        <td className="">{each.user.nickName}</td>
+        <td className="wholeList__table__context">{each.content}</td>
+        <td className="wholeList__table__author">{each.user.nickName}</td>
         <td className="wholeList__tableDate">{each.registerDate.slice(0, 10)}</td>
-        <td className="wholeList__tableDate">{each.score}</td>
-        <td className="wholeList__tableDate">
+        <td className="wholeList__table__rating">{each.score}</td>
+        <td className="wholeList__tableThumbs">
           {each.thumbJudge ? <FaThumbsUp /> : <FaRegThumbsUp />}
           {each.thumbCount}개
         </td>

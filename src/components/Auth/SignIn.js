@@ -34,10 +34,10 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
         .then((response) => {
           if (!response.data) {
             history.push("/auth");
-            setMessage("실패했습니다");
+            alert("올바르지 않은 ID/PW 입니다.");
           } else if (response.data) {
             setCurrentUser(response.data); //이건 프론트딴에서 memberId이 들어왔다고 하는거...;
-            alert("로그인성공");
+            alert(response.data.nickName + "님 환영합니다!");
             from();
           }
         });
@@ -78,11 +78,11 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
         로그인
       </button>
       <span className="auth__noti">
-        회원가입하시겠습니까?&nbsp;&nbsp;
+        아직 회원이 아니신가요?&nbsp;&nbsp;
         <strong onClick={toggleIsSignIn}>회원가입</strong>
       </span>
 
-      <div className="auth__message">{message ?? message}</div>
+     
     </div>
   );
 };

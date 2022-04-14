@@ -39,11 +39,13 @@ const TransDetail = ({ location, match }) => {
     // return <Loading />;
     return (
       <div className="transDetail">
-        <BulletinCard
-          data={data}
-          type="transcription"
-          onThumb={() => findData()}
-        />
+        <div className="transDetail__wrapper">
+          <BulletinCard
+            data={data}
+            type="transcription"
+            onThumb={() => findData()}
+          />
+        </div>
       </div>
     );
   }
