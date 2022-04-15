@@ -60,7 +60,7 @@ const Notice = (props) => {
           <NoticeList data={noticeList} />
         </div>
         <div className="adminButton">
-          {currentUser.id === 16 && (
+          {currentUser.id === 1 && (
             <button
               onClick={() => {
                 history.push(`/noticeAdmin`);

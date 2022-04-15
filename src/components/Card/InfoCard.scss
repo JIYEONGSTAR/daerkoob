@@ -7,7 +7,8 @@
 
   &__wrapper {
     background-color: white;
-    padding:0 16px 0 16px;
+    padding: 0 16px 0 16px;
+    height: 90vh;
   }
   &__top {
     border-radius: 25px;
@@ -34,6 +35,13 @@
         margin-bottom: 16px;
         color: white;
         font-size: 2rem;
+      }
+      &__friendBtn {
+        background-color: $pointColor;
+        border-radius: 25px;
+        color: white;
+        padding: 8px;
+        margin-bottom: 8px;
       }
     }
     &__btn {
@@ -72,4 +80,55 @@
       }
     }
   }
+}
+.followingList {
+  display: table;
+  width: 60vw;
+  min-height: 70vh;
+  line-height: 2.5;
+  margin-top: 30px;
+  white-space: nowrap;
+  border-collapse: collapse;
+  border-spacing: 0;
+  // border-bottom: 2px solid black;
+  &__header {
+    border-bottom: 3px solid black;
+  }
+}
+.following__wrapper {
+  background-color: white;
+  padding: 0 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+.followingLine {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  align-items: center;
+  display: flex;
+  line-height: 2.5;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  height: 40px;
+  &__nickName {
+    width: 65%;
+    max-width: 65%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    text-align: start;
+    box-sizing: border-box;
+  }
+}
+.followingButton {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 16px 0;
+  width: 60vw;
 }

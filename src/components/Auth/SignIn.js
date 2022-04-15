@@ -57,14 +57,14 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
     <div className="auth">
       <Input
         id="userId"
-        placeholder="userId"
+        placeholder="아이디"
         value={info.userId}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
       <Input
         id="password"
-        placeholder="Password"
+        placeholder="비밀번호"
         value={info.password}
         onChange={handleChange}
         type="password"
@@ -81,8 +81,6 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
         아직 회원이 아니신가요?&nbsp;&nbsp;
         <strong onClick={toggleIsSignIn}>회원가입</strong>
       </span>
-
-     
     </div>
   );
 };

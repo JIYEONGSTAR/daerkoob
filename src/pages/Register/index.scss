@@ -1,3 +1,4 @@
+@import "Styles/variable.scss";
 .register {
   margin-top: 70px;
   width: 100%;
@@ -5,7 +6,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  background-color: $lightColor;
+  &__wrapper {
+    background-color: white;
+    padding: 0 16px 0 16px;
+  }
   &__type {
     width: 630px;
     margin: 30px 0 16px 0;
@@ -29,6 +34,7 @@
       resize: none;
       margin-top: 16px;
       width: 100%;
+      padding: 8px;
     }
   }
 

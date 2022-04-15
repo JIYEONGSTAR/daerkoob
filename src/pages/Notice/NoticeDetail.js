@@ -44,7 +44,7 @@ const NoticeDetail = ({ match }) => {
         <div className="noticeDetail__body">
           <div className="noticeDetail__body__content">{data.content}</div>
           <div className="noticeDetail__body__button">
-            {currentUser.id === 16 && (
+            {currentUser.id === 1 && (
               <button onClick={() => handleDelete(data.id)}>공지삭제</button>
             )}
           </div>

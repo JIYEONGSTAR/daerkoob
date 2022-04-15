@@ -92,7 +92,7 @@ const Home = () => {
   var bannerSettings = {
     // dots: true,
     infinite: true,
-    speed: 500,
+    speed: 750,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -125,7 +125,9 @@ const Home = () => {
 
       <div className="home__newList">
         <div className="home__newList__trans">
-          <div className="home__newList__header"><h3>새로운 필사</h3></div>
+          <div className="home__newList__header">
+            <h3>새로운 필사</h3>
+          </div>
           <div className="home__newList__line">
             {newTrans.map((d) => (
               <NewList data={d} type="transcription" />
@@ -133,7 +135,9 @@ const Home = () => {
           </div>
         </div>
         <div className="newList__review">
-          <div className="home__newList__header"><h3>새로운 리뷰</h3></div>
+          <div className="home__newList__header">
+            <h3>새로운 리뷰</h3>
+          </div>
           <div className="home__newList__line">
             {newReview.map((d) => (
               <NewList data={d} type="review" />

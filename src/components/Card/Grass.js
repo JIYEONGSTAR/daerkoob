@@ -12,6 +12,7 @@ const Grass = ({ userId, year }) => {
     const init = async () => {
       const response = await api.get(`user/record/${userId}/${year}`);
       setList([...response.data.grass]);
+      console.log(response.data.grass);
     };
     init();
     // return () => {};

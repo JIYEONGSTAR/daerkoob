@@ -59,23 +59,29 @@ const BulletinCard = ({ data, type, onThumb }) => {
   if (data) {
     //console.log(data);
     return (
-
       <div className="bulletinCard">
         <div className="bulletinCard__header">
           <div className="bulletinCard__header__img">
             <img src={data.book.image} alt="" height="280" width="180"></img>
           </div>
           <div className="bulletinCard__header__title">{data.book.title}</div>
-          <div className="bulletinCard__header__explain">이 책을 읽은 <strong>{data.user.nickName}</strong>님의 {type==="review" ? "리뷰" : "필사"}</div>
-          <div className="bulletinCard__header__timestamp">{data.registerDate.split("T").join(" ")}에 작성됨</div>
+          <div className="bulletinCard__header__explain">
+            이 책을 읽은 <strong>{data.user.nickName}</strong>님의{" "}
+            {type === "review" ? "리뷰" : "필사"}
+          </div>
+          <div className="bulletinCard__header__timestamp">
+            {data.registerDate.split("T").join(" ")}에 작성됨
+          </div>
         </div>
         <div className="bulletinCard__body">
-          {type==="review"&&
+          {type === "review" && (
             <div className="bulletinCard__body__rating">
-              <h3>이 책의 별점</h3>
-              {data.score && <ReactStars value={data.score} size={30} edit={false}/>}
+              <h3>{data.user.nickName}님이 준 별점</h3>
+              {data.score && (
+                <ReactStars value={data.score} size={30} edit={false} />
+              )}
             </div>
-          }
+          )}
           <div className="bulletinCard__body__text">{data.content}</div>
           <div className="bulletinCard__body__like">
             <div>이 게시물을 추천하기</div>

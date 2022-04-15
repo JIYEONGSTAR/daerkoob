@@ -7,8 +7,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 90vh;
 }
 .friendPage {
   margin-top: 70px;
+  display: flex;
+  width: 100%;
+  background-color: $lightColor;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   //background-color: $mainColor;
 }

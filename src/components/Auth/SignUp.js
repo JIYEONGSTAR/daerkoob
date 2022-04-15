@@ -64,39 +64,39 @@ export const SignUp = ({ toggleIsSignIn }) => {
     <div className="auth">
       <Input
         id="userId"
-        placeholder="Id"
+        placeholder="아이디"
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
       <Input
         id="name"
-        placeholder="name"
+        placeholder="이름"
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
       <Input
         id="nickName"
-        placeholder="nickname"
+        placeholder="닉네임"
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
       <Input
         id="password"
-        placeholder="Password"
+        placeholder="비밀번호"
         onChange={handleChange}
         type="password"
         onKeyPress={handleKeyPress}
       />
       <Input
         id="confirmPassword"
-        placeholder="repeat Password"
+        placeholder="비밀번호 확인"
         type="password"
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
       <Input
         id="birth"
-        placeholder="birth"
+        placeholder="생일"
         type="date"
         onChange={handleChange}
       />
