@@ -19,32 +19,15 @@ const InfoCard = ({ personInfo, id }) => {
   const [viewTransList, setViewTransList] = useState(false);
   const [searchFriend, setSearchFriend] = useState("");
   const [isFriend, setIsFriend] = useState(false);
-  //console.log("id,currentUserId", id, currentUser.id);
-  //console.log("CurrentUser", currentUser);
-  //console.log("personInfo", personInfo);
   const init = async () => {
     const responseTrans = await api.get(`user/transcription/${id}`);
     setMyTransList([...responseTrans.data]);
-    //  //console.log(yTransList);
     const responseReview = await api.get(`user/review/${id}`);
     setMyReviewList([...responseReview.data]);
-    const confirm = currentUser.friends.filter(
-      (each) => {
-        each.friendIndex === currentUser.id && setIsFriend(true);
-        //  //console.log(each);
-      }
-      // { //console.log(each)}
-    );
+    const confirm = currentUser.friends.filter((each) => {
+      each.friendIndex === Number(id) && setIsFriend(true);
+    });
   };
-  //console.log(isFriend);
-  // const gotoFriendPage = (friendId) => {
-  //   history.push({
-  //     pathname: `/friendPage/${friendId}`,
-  //   });
-  // };
-  // const gotoMypage = () => {
-  //   history.push(`/mypage`);
-  // };
   const handleSearch = async () => {
     const response = await api.post("user/find", null, {
       params: {
@@ -53,7 +36,6 @@ const InfoCard = ({ personInfo, id }) => {
       },
     });
     alert(response.data.message.message);
-    //console.log(response);
     response.data.message.flag &&
       history.push({
         pathname: `/friendPage/${response.data.list[0].id}`,
@@ -69,35 +51,26 @@ const InfoCard = ({ personInfo, id }) => {
         friendId: id,
       },
     });
-    //console.log(response);
     alert(response.data.message.message);
     history.push("/mypage");
   };
   const deleteFriend = async (d) => {
-    //console.log(d);
     const response = await api.post("friend/delete", null, {
       params: {
         userId: currentUser.id,
         friendId: d.id,
       },
     });
-    //console.log(response);
     alert(response.data.message.message);
     history.push("/mypage");
   };
-  // let test = currentUser.friends.filter(
-  //   (each) => each.friendIndex === Number(id)
-  // );
-  //  //console.log(test);
 
   useEffect(() => {
     init();
-  }, [id]);
-  //  //console.log(personInfo);
+  }, [id, currentUser, personInfo]);
   if (viewTransList) {
     return (
       <div className="infoCard__wrapper">
-      
         <MypageList
           list={myTransList}
           type="transcription"
@@ -105,13 +78,11 @@ const InfoCard = ({ personInfo, id }) => {
             setViewTransList(false);
           }}
         />
-      
       </div>
     );
   }
   if (viewReviewList) {
     return (
-      
       <div className="infoCard__wrapper">
         <MypageList
           list={myReviewList}
@@ -121,13 +92,13 @@ const InfoCard = ({ personInfo, id }) => {
           }}
         />
       </div>
-      
     );
   }
   if (viewFriendList) {
     return (
-      <div>
+      <div className="following__wrapper">
         <FollowingList
+          nickName={personInfo.nickName}
           list={personInfo.friends}
           onClose={() => {
             setViewFriendList(false);
@@ -146,52 +117,65 @@ const InfoCard = ({ personInfo, id }) => {
               <div className="infoCard__top__profile__nickname">
                 {personInfo.nickName}
               </div>
-              {id === currentUser.id ? null : isFriend ? (
-                <div onClick={() => deleteFriend(personInfo)}>
-                  이미 친구입니다. 삭제하시겠습니까?
-                </div>
-              ) : (
-                <div onClick={followFriend}>친구 추가</div>
-              )}
+              <div>
+                {id === currentUser.id ? null : isFriend ? (
+                  <div
+                    className="infoCard__top__profile__friendBtn"
+                    onClick={() => deleteFriend(personInfo)}
+                  >
+                    친구 삭제
+                  </div>
+                ) : (
+                  <div
+                    className="infoCard__top__profile__friendBtn"
+                    onClick={followFriend}
+                  >
+                    친구 추가
+                  </div>
+                )}
+              </div>
               <div className="infoCard__top__friendSearch">
                 {/* <div className="infoCard__top__friendSearch__input"> */}
-                  <FaSearch size="20" className="infoCard__top__friendSearch__icon" />
-                  <input
-                    className="infoCard__top__friendSearch__input"
-                    onClick={() => setSearchFriend("")}
-                    placeholder="정확한 닉네임을 입력하세요"
-                    onChange={(e) => {
-                      setSearchFriend(e.target.value);
-                    }}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleSearch();
-                        // setTitle("");
-                      }
-                    }}
-                    value={searchFriend}
-                  ></input>
+                <FaSearch
+                  size="20"
+                  className="infoCard__top__friendSearch__icon"
+                />
+                <input
+                  className="infoCard__top__friendSearch__input"
+                  onClick={() => setSearchFriend("")}
+                  placeholder="정확한 닉네임을 입력하세요"
+                  onChange={(e) => {
+                    setSearchFriend(e.target.value);
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch();
+                    }
+                  }}
+                  value={searchFriend}
+                ></input>
                 {/* </div> */}
               </div>
-            <div className="infoCard__top__btn">
-              <button onClick={() => setViewTransList(true)}>
-                <p>{personInfo.transcriptionCount}</p>
-                <p>필사</p>
-              </button>
-              <button onClick={() => setViewReviewList(true)}>
-                <p>{personInfo.reviewCount}</p> <p>리뷰</p>
-              </button>
-              <button onClick={() => setViewFriendList(true)}>
-                {console.log(personInfo)}
-                <p>{personInfo.friends.length}</p>
-                <p>팔로우</p>
-              </button>
+              <div className="infoCard__top__btn">
+                <button onClick={() => setViewTransList(true)}>
+                  <p>{personInfo.transcriptionCount}</p>
+                  <p>필사</p>
+                </button>
+                <button onClick={() => setViewReviewList(true)}>
+                  <p>{personInfo.reviewCount}</p> <p>리뷰</p>
+                </button>
+                <button onClick={() => setViewFriendList(true)}>
+                  <p>{personInfo.friends.length}</p>
+                  <p>팔로우</p>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
           <div className="grass">
-            <div className="grass__header"><h3>독서 후, 하루 한 줄.</h3></div>
-            <Grass userId={currentUser.id} year={year} />
+            <div className="grass__header">
+              <h3>독서 후, 하루 한 줄.</h3>
+            </div>
+            <Grass userId={personInfo.id} year={year} />
           </div>
         </div>
       </>

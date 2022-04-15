@@ -3,7 +3,6 @@ import { FaThumbsUp } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 const NewList = ({ data, title, type }) => {
   const history = useHistory();
-  console.log(data);
   return (
     <div
       className="home__newList__line__one"
@@ -11,17 +10,9 @@ const NewList = ({ data, title, type }) => {
         type === "review"
           ? history.push({
               pathname: `/reviewDetail/${data.id}/`,
-              state: {
-                data: data,
-              },
-              //안넣어도 됨
             })
           : history.push({
               pathname: `/transDetail/${data.id}/`,
-              state: {
-                data: data,
-              },
-              //안넣어도 됨
             });
       }}
     >

@@ -4,8 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
-  //width: 100vw;
+  min-height: 100vh;
 }
 .auth {
   margin: 5%;
@@ -13,7 +12,6 @@
   width: 500px;
   border: solid 0.5px black;
   padding: 60px 48px;
-  // box-shadow: 10px 5px 5px gray;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -31,12 +29,7 @@
       height: 100%;
       background-color: white;
       padding-left: 12px;
-      //margin-bottom: 10px;
       color: black;
-
-      // &::placeholder {
-      //   color: white;
-      // }
     }
     &__input:valid ~ &__placeholder,
     &__input:focus ~ &__placeholder {
@@ -82,7 +75,6 @@
       color: red;
       cursor: pointer;
       &:hover {
-        // color: white;
         transform: scale(1.1);
       }
     }
@@ -125,8 +117,3 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-width: thin;
   padding: 20px;
 }
-
-//출처: https://baegofda.tistory.com/106 [오물오물 개발일기]
-// button {
-//   background-color: black;
-// }

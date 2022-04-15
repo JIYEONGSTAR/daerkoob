@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "components/Card/BookCard.scss";
-import useCurrentUser from "Hooks/useCurrentUser";
-import { AiFillCheckCircle } from "react-icons/ai";
-//import BookDetail from "components/Card/BookDetail";
-//import useContents from "Hooks/useContents";
-// import { currentContent } from 'Store';
 import api from "api/api";
 
 const BookCard = ({ data }) => {
@@ -33,7 +28,13 @@ const BookCard = ({ data }) => {
     <div className="bookCard" onClick={handleClick}>
       <div className="bookCard__context">
         <div className="bookCard__image">
-          <img src={image ? image : img_link} alt="" height="140" width="90" className="bookCard__img" />
+          <img
+            src={image ? image : img_link}
+            alt=""
+            height="140"
+            width="90"
+            className="bookCard__img"
+          />
         </div>
         <div className="bookCard__title">
           {title.replace(/<b>/gi, "").replace(/<\/b>/gi, "")}

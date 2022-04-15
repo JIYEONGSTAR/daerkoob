@@ -12,12 +12,8 @@ import logo from "images/daerkooblogo.png";
 
 const Navbar = () => {
   const history = useHistory();
-  // const activeStyle = {
-  //   background: "black",
-  //   color: "white",
-  // };
   const { currentUser, setCurrentUser } = useCurrentUser();
-  const { currentBooks, setCurrentBooks } = useCurrentBooks();
+  const { setCurrentBooks } = useCurrentBooks();
 
   const [title, setTitle] = useState("");
   const handleLogout = () => {
@@ -29,10 +25,8 @@ const Navbar = () => {
     setTitle(e.target.value);
   };
   const handleKeyPress = (e) => {
-    //엔터키로 입력하기
     if (e.key === "Enter") {
       handleSubmit();
-      // setTitle("");
     }
   };
   const handleSubmit = async () => {
@@ -46,7 +40,7 @@ const Navbar = () => {
         })
         .then((response) => {
           setCurrentBooks([...response.data]);
-          history.push({pathname:"/form",state:{title:title},});
+          history.push({ pathname: "/form", state: { title: title } });
         });
     } catch {
       console.log("error");
@@ -84,20 +78,15 @@ const Navbar = () => {
         </div>
 
         {currentUser.id !== 0 ? (
-          // <div className="nav__right">
           <div>
             <button className="nav__button" onClick={handleLogout}>
-              {" "}
               로그아웃
             </button>
           </div>
         ) : (
-          // </div>
-          // <div className="nav__right">
           <button className="nav__button">
             <Link to="/auth"> 로그인</Link>
           </button>
-          // </div>
         )}
       </div>
     </div>

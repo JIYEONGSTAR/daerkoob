@@ -20,40 +20,42 @@ const Detail = ({ match, location }) => {
       const response = await api.get(`book/find/${params.isbn}`);
       setCurrentBook(response.data);
     };
-    console.log("디테일페이지");
     findBook();
   }, []);
-  console.log(currentBook);
   if (viewTrans) {
     return (
       <div className="detail">
-        <DetailCard currentBook={currentBook} />
-        <div style={{marginTop:"16px"}}/>
-        <WholeList
-          type="transcription"
-          isbn={params.isbn}
-          onClose={() => setViewTrans(false)}
-        />
+        <div className="detail__wrapper">
+          <DetailCard currentBook={currentBook} />
+          <div style={{ marginTop: "16px" }} />
+          <WholeList
+            type="transcription"
+            isbn={params.isbn}
+            onClose={() => setViewTrans(false)}
+          />
+        </div>
       </div>
     );
   }
   if (viewReview) {
     return (
       <div className="detail">
-        <DetailCard currentBook={currentBook} />
-        <div style={{marginTop:"16px"}}/>
-        <WholeList
-          type="review"
-          isbn={params.isbn}
-          onClose={() => setViewReview(false)}
-        />
+        <div className="detail__wrapper">
+          <DetailCard currentBook={currentBook} />
+          <div style={{ marginTop: "16px" }} />
+          <WholeList
+            type="review"
+            isbn={params.isbn}
+            onClose={() => setViewReview(false)}
+          />
+        </div>
       </div>
     );
   }
   return (
     <div className="detail">
       <div className="detail__wrapper">
-        <div style={{marginTop:"16px"}}/>
+        <div style={{ marginTop: "16px" }} />
         <DetailCard currentBook={currentBook} />
         <div className="detail__list">
           <div className="detail__list__trans">

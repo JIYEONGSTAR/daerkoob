@@ -17,7 +17,6 @@ const WholeList = ({ isbn, type, onClose }) => {
     const response = await api.get(
       `${type}/inquiry/${currentUser.id}/${isbn}/${page}`
     );
-    console.log(response);
     setTotalPage(response.data.totalSize);
     setList(response.data.list);
   };
@@ -71,7 +70,11 @@ const WholeList = ({ isbn, type, onClose }) => {
         </>
       )}
       <div className="wholeList__paginationArea">
-        <Pagination setNumber={handlePageChange} total={totalPage} page={page} />
+        <Pagination
+          setNumber={handlePageChange}
+          total={totalPage}
+          page={page}
+        />
       </div>
       <div className="wholeList__buttonArea">
         <button onClick={onClose}>닫기</button>

@@ -5,7 +5,8 @@
   text-align: center;
   justify-items: center;
   background-color: $lightColor;
-  &__wrapper{
+  min-height: 90vh;
+  &__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +17,6 @@
 .noticeList {
   display: table;
   width: 60vw;
-  min-height: 70vh;
   line-height: 2.5;
   margin-top: 30px;
   white-space: nowrap;

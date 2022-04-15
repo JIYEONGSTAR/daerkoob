@@ -8,7 +8,6 @@ const Mypage = () => {
   const { currentUser, setCurrentUser } = useCurrentUser();
   const getMyInfo = async () => {
     const response = await api.get(`user/${currentUser.id}`);
-    console.log(response);
     setCurrentUser(response.data);
   };
   useEffect(() => {

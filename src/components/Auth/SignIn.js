@@ -8,7 +8,6 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
   const history = useHistory();
   const { setCurrentUser } = useCurrentUser();
 
-  const [message, setMessage] = useState("");
   const [info, setInfo] = useState({
     userId: "",
     password: "",
@@ -47,7 +46,6 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
   };
   const handleKeyPress = (e) => {
     //엔터키로 입력하기
-    // console.log("enter", e);
     if (e.key === "Enter") {
       handleSubmit();
     }
@@ -57,14 +55,14 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
     <div className="auth">
       <Input
         id="userId"
-        placeholder="userId"
+        placeholder="아이디"
         value={info.userId}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
       <Input
         id="password"
-        placeholder="Password"
+        placeholder="비밀번호"
         value={info.password}
         onChange={handleChange}
         type="password"
@@ -81,8 +79,6 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
         아직 회원이 아니신가요?&nbsp;&nbsp;
         <strong onClick={toggleIsSignIn}>회원가입</strong>
       </span>
-
-     
     </div>
   );
 };

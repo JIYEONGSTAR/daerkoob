@@ -2,7 +2,6 @@ import React from "react";
 import "./Pagination.scss";
 
 const PageNum = ({ index, handlePageChange, thisPage }) => {
-  console.log(thisPage);
   return (
     <>
       {thisPage === index ? (
@@ -26,9 +25,7 @@ const PageNum = ({ index, handlePageChange, thisPage }) => {
 const Pagination = ({ setNumber, total, page }) => {
   const handlePageChange = (num) => {
     setNumber(num);
-    // console.log(num);
   };
-  // console.log("page", page);
   return (
     <div className="paginationButton">
       {[...Array(parseInt(1 + (total - 1) / 10))].map((e, i) => (
