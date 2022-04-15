@@ -19,33 +19,15 @@ const InfoCard = ({ personInfo, id }) => {
   const [viewTransList, setViewTransList] = useState(false);
   const [searchFriend, setSearchFriend] = useState("");
   const [isFriend, setIsFriend] = useState(false);
-  //console.log("id,currentUserId", id, currentUser.id);
-  //console.log("CurrentUser", currentUser);
-  console.log("personInfo", personInfo);
   const init = async () => {
     const responseTrans = await api.get(`user/transcription/${id}`);
     setMyTransList([...responseTrans.data]);
-    //  //console.log(yTransList);
     const responseReview = await api.get(`user/review/${id}`);
     setMyReviewList([...responseReview.data]);
-    const confirm = currentUser.friends.filter(
-      (each) => {
-        // each.friendIndex === currentUser.id && setIsFriend(true);
-        each.friendIndex === Number(id) && setIsFriend(true);
-        //  //console.log(each);
-      }
-      // { //console.log(each)}
-    );
+    const confirm = currentUser.friends.filter((each) => {
+      each.friendIndex === Number(id) && setIsFriend(true);
+    });
   };
-  //console.log(isFriend);
-  // const gotoFriendPage = (friendId) => {
-  //   history.push({
-  //     pathname: `/friendPage/${friendId}`,
-  //   });
-  // };
-  // const gotoMypage = () => {
-  //   history.push(`/mypage`);
-  // };
   const handleSearch = async () => {
     const response = await api.post("user/find", null, {
       params: {
@@ -54,7 +36,6 @@ const InfoCard = ({ personInfo, id }) => {
       },
     });
     alert(response.data.message.message);
-    //console.log(response);
     response.data.message.flag &&
       history.push({
         pathname: `/friendPage/${response.data.list[0].id}`,
@@ -70,31 +51,23 @@ const InfoCard = ({ personInfo, id }) => {
         friendId: id,
       },
     });
-    //console.log(response);
     alert(response.data.message.message);
     history.push("/mypage");
   };
   const deleteFriend = async (d) => {
-    //console.log(d);
     const response = await api.post("friend/delete", null, {
       params: {
         userId: currentUser.id,
         friendId: d.id,
       },
     });
-    //console.log(response);
     alert(response.data.message.message);
     history.push("/mypage");
   };
-  // let test = currentUser.friends.filter(
-  //   (each) => each.friendIndex === Number(id)
-  // );
-  //  //console.log(test);
 
   useEffect(() => {
     init();
   }, [id, currentUser, personInfo]);
-  //  //console.log(personInfo);
   if (viewTransList) {
     return (
       <div className="infoCard__wrapper">
@@ -177,7 +150,6 @@ const InfoCard = ({ personInfo, id }) => {
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
                       handleSearch();
-                      // setTitle("");
                     }
                   }}
                   value={searchFriend}
@@ -193,7 +165,6 @@ const InfoCard = ({ personInfo, id }) => {
                   <p>{personInfo.reviewCount}</p> <p>리뷰</p>
                 </button>
                 <button onClick={() => setViewFriendList(true)}>
-                  {console.log(personInfo)}
                   <p>{personInfo.friends.length}</p>
                   <p>팔로우</p>
                 </button>

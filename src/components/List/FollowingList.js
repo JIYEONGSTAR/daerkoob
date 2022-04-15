@@ -14,7 +14,6 @@ const EachFollowing = ({ following, onClose }) => {
     });
     onClose();
     alert(response.data.message.message);
-    console.log(response);
     response.data.message.flag &&
       history.push({
         pathname: `/friendPage/${response.data.list[0].id}`,
@@ -24,15 +23,12 @@ const EachFollowing = ({ following, onClose }) => {
       });
   };
   return (
-    // <div className="followingList ">
-    //   <div className=""
     <div
       className="followingLine"
       onClick={() => clickFriend(following.friendNickName)}
     >
       <div className="followingLine__nickName"> {following.friendNickName}</div>
     </div>
-    // </div>
   );
 };
 const FollowingList = ({ list, onClose, nickName }) => {
@@ -43,14 +39,6 @@ const FollowingList = ({ list, onClose, nickName }) => {
           <h2>{nickName}의 팔로잉목록</h2>
         </div>
         {list.map((each) => (
-          // <div>
-          //   {console.log(each)}
-          //   <span onClick={() => clickFriend(each.friendNickName)}>
-          //     {each.friendNickName}
-          //   </span>
-          //   {/* <span>{each.friendIndex}</span> */}
-          // </div>
-
           <EachFollowing following={each} onClose={onClose} />
         ))}
       </div>

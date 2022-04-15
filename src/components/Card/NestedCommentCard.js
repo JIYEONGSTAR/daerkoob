@@ -5,7 +5,6 @@ import CommentInputCard from "./CommentInputCard";
 import api from "api/api";
 import { FaThumbsUp, FaRegThumbsUp, FaCaretDown } from "react-icons/fa";
 const NestedCommentCard = ({ data, setCommentAdd, update }) => {
-  // console.log("nestedComment", data);
   const d = data;
   const { currentUser } = useCurrentUser();
   const [nestedComment, setNestedComment] = useState(""); //대댓글
@@ -50,36 +49,26 @@ const NestedCommentCard = ({ data, setCommentAdd, update }) => {
         </span>
       </div>
 
-     
- 
       <div>
         <FaCaretDown onClick={handleCommentsOpen} />
         <span>답글 {d.nestedCount}개 보기</span>
       </div>
 
-      {commentsOpen &&<>
-       {/* <button onClick={() => setCommentRegister(!commentRegister)}>
-       {console.log(d)}
-
-       <pre> &#09;댓글달기</pre>
-     </button> */}
-     {/* {commentRegister && ( */}
-       <CommentInputCard
-         comment={nestedComment}
-         handleChange={handleChange}
-         handleSubmit={handleSubmit}
-         // handleKeyPress={handleKeyPress}
-       />
-     {/* )} */}
-      
-      {/* d.comments && ( */}
+      {commentsOpen && (
         <>
-          {d.comments.map((c) => (
-            <div style={{paddingLeft: "20px"}}> &#45; {c.content}</div>
-          ))}
+          <CommentInputCard
+            comment={nestedComment}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+          <>
+            {d.comments.map((c) => (
+              <div style={{ paddingLeft: "20px" }}> &#45; {c.content}</div>
+            ))}
+          </>
+          {/* ) */}
         </>
-      {/* ) */}
-      </>}
+      )}
     </div>
   );
 };

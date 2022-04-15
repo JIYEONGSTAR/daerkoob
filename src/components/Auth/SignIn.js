@@ -8,7 +8,6 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
   const history = useHistory();
   const { setCurrentUser } = useCurrentUser();
 
-  const [message, setMessage] = useState("");
   const [info, setInfo] = useState({
     userId: "",
     password: "",
@@ -47,7 +46,6 @@ export const SignIn = ({ toggleIsSignIn, from }) => {
   };
   const handleKeyPress = (e) => {
     //엔터키로 입력하기
-    // console.log("enter", e);
     if (e.key === "Enter") {
       handleSubmit();
     }

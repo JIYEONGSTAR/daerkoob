@@ -10,15 +10,12 @@ const NoticeDetail = ({ match }) => {
   const { currentUser } = useCurrentUser();
   const { params } = match;
   const id = params.id;
-  console.log(id);
   const [data, setData] = useState();
   const findData = async () => {
     const response = await api.get(`notice/${id}`);
-    console.log(response);
     setData(response.data);
   };
   const handleDelete = async (id) => {
-    console.log(id);
     const response = await api.post(`notice/delete`, null, {
       params: {
         id: id,
@@ -26,7 +23,6 @@ const NoticeDetail = ({ match }) => {
     });
     alert(response.data.message.message);
     history.push("/notice");
-    // console.log(response);
   };
   useEffect(() => {
     findData();

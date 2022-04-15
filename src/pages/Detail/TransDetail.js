@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 import useCurrentUser from "Hooks/useCurrentUser";
 import api from "api/api";
 import Loading from "Contents/Loading";
-import "./TransDetail.scss"
+import "./TransDetail.scss";
 
-const TransDetail = ({ location, match }) => {
+const TransDetail = ({ match }) => {
   const { currentUser } = useCurrentUser();
   const history = useHistory();
   const { params } = match; //url params
@@ -19,24 +19,12 @@ const TransDetail = ({ location, match }) => {
       `transcription/inquiry/${currentUser.id}/${id}`
     );
 
-    console.log("transDetail", response.data);
-    // console.log(...response.data.list);
-    // const preData = [...response.data.list];
-    // console.log("preData", preData);
-    // let preData = [];
-    // response.data.list.forEach((item) => {
-    //   preData.push(item);
-    // });
     setData(...response.data.list);
-    // console.log(data);
-    // setData(preData);
   };
   useEffect(() => {
     findData();
   }, []);
   if (data) {
-    console.log(data);
-    // return <Loading />;
     return (
       <div className="transDetail">
         <div className="transDetail__wrapper">

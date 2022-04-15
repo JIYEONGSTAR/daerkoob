@@ -20,10 +20,8 @@ const Detail = ({ match, location }) => {
       const response = await api.get(`book/find/${params.isbn}`);
       setCurrentBook(response.data);
     };
-    console.log("디테일페이지");
     findBook();
   }, []);
-  console.log(currentBook);
   if (viewTrans) {
     return (
       <div className="detail">

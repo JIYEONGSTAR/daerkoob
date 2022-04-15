@@ -17,7 +17,6 @@ const WholeList = ({ isbn, type, onClose }) => {
     const response = await api.get(
       `${type}/inquiry/${currentUser.id}/${isbn}/${page}`
     );
-    console.log(response);
     setTotalPage(response.data.totalSize);
     setList(response.data.list);
   };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import api from "api/api";
 import useCurrentUser from "Hooks/useCurrentUser";
 import ReactStars from "react-stars"; //별점매기기
@@ -19,9 +18,7 @@ const Register = ({ isbn, location, match }) => {
   };
   const ratingChanged = (newRating) => {
     setScore(newRating);
-    console.log(score);
   };
-  // const type =
   const handleSubmit = async () => {
     let isSubmit = window.confirm("저장하시겠습니까?");
     if (isSubmit) {
@@ -33,21 +30,12 @@ const Register = ({ isbn, location, match }) => {
           score: score,
         },
       });
-      console.log(response);
       if (response.data.flag) {
         alert("저장했습니다.");
         history.push(`/detail/${params.isbn}`);
-        // onClose();
       } else {
         alert(response.data.message);
       }
-    }
-  };
-  const handleKeyPress = (e) => {
-    //엔터키로 입력하기
-    // console.log("enter", e);
-    if (e.key === "Enter") {
-      handleSubmit();
     }
   };
 

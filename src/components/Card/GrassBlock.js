@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const GrassBlock = ({ d }) => {
-  // const [hover, setHover] = useState(false);
   const Hover = ({ onHover, children }) => (
     <div className="hover">
       <div className="hover__no-hover">{children}</div>
@@ -46,8 +45,6 @@ const GrassBlock = ({ d }) => {
                   }
                 : {
                     backgroundColor: `rgb(87,${255 - 100},${100})`,
-                    // width: "15px",
-                    // height: "15px",
                   }
             }
           ></div>

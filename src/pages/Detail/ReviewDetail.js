@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import useCurrentUser from "Hooks/useCurrentUser";
 import api from "api/api";
 import Loading from "Contents/Loading";
-import "./ReviewDetail.scss"
+import "./ReviewDetail.scss";
 const ReviewDetail = ({ location, match }) => {
   const { currentUser } = useCurrentUser();
   const history = useHistory();
@@ -17,11 +17,7 @@ const ReviewDetail = ({ location, match }) => {
   const findData = async () => {
     const response = await api.get(`review/inquiry/${currentUser.id}/${id}`);
 
-    console.log("reveiwsDetail", response.data);
-
     setData(...response.data.list);
-    // setWriter(response.data.list.user.nickName);
-    // console.log(writer);
   };
   useEffect(() => {
     findData();

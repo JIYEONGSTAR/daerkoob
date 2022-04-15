@@ -17,7 +17,6 @@
     display: flex;
     background-color: $mainColor;
     justify-content: center;
-    // align-items: flex-end;
     &__line {
       position: absolute;
       top: 25vh;
@@ -90,7 +89,6 @@
   white-space: nowrap;
   border-collapse: collapse;
   border-spacing: 0;
-  // border-bottom: 2px solid black;
   &__header {
     border-bottom: 3px solid black;
   }

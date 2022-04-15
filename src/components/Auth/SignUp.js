@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "./Input";
 import api from "api/api";
 export const SignUp = ({ toggleIsSignIn }) => {
-  // const history = useHistory();
   const [info, setInfo] = useState({
     userId: "",
     nickName: "",
@@ -48,18 +47,6 @@ export const SignUp = ({ toggleIsSignIn }) => {
       handleSubmit();
     }
   };
-  // const handleCheck = (e) => {
-  //   const {
-  //     target: { value },
-  //   } = e;
-  //   if (info.password !== value) {
-  //     setMessage("일치하지 않습니다.");
-  //   } else {
-  //     setMessage("일치합니다");
-  //     setInfo({ ...info, confirmPassword: value });
-  //   }
-  // };
-  //백에서 구현함
   return (
     <div className="auth">
       <Input
